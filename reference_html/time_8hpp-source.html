@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione:  File sorgente time.hpp</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+<h1>time.hpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//###################################################################################################</span>
+<a name="l00002"></a>00002 <span class="comment">//      </span>
+<a name="l00003"></a>00003 <span class="comment">//      FILE NAME :                     time.hpp</span>
+<a name="l00004"></a>00004 <span class="comment">//      </span>
+<a name="l00005"></a>00005 <span class="comment">//      FILE TYPE :                     C++ file</span>
+<a name="l00006"></a>00006 <span class="comment">//      </span>
+<a name="l00007"></a>00007 <span class="comment">//      AUTHORS :                       Mariacristina Romano, Gianmaria Enea Roat</span>
+<a name="l00008"></a>00008 <span class="comment">//      </span>
+<a name="l00009"></a>00009 <span class="comment">//      DESCRIPTION :           Declaration of class Time</span>
+<a name="l00010"></a>00010 <span class="comment">//      </span>
+<a name="l00011"></a>00011 <span class="comment">//      FIRST VERSION :         2010/jan/5</span>
+<a name="l00012"></a>00012 <span class="comment">//      </span>
+<a name="l00013"></a>00013 <span class="comment">//      LAST UPTIME :           2010/feb/5</span>
+<a name="l00014"></a>00014 <span class="comment">//      </span>
+<a name="l00015"></a>00015 <span class="comment">//      STATUS :                        final</span>
+<a name="l00016"></a>00016 <span class="comment">//      </span>
+<a name="l00017"></a>00017 <span class="comment">//      COPYRIGHT :                     none</span>
+<a name="l00018"></a>00018 <span class="comment">//      </span>
+<a name="l00019"></a>00019 <span class="comment">//      </span>
+<a name="l00020"></a>00020 <span class="comment">//      DETAILED DESCRIPTION :  Classe che rappresenta un istante temporale, quindi una data e un’orario.</span>
+<a name="l00021"></a>00021 <span class="comment">//                                      Abbiamo trattato questa classe con particolare cura, implementando funzioni di controllo per gli anni bisestili, metodi e operatori</span>
+<a name="l00022"></a>00022 <span class="comment">//                                      di interazione con le altri classi temporali (in particolare la Deltatime), prestando attenzione al differente numero di giorni dei </span>
+<a name="l00023"></a>00023 <span class="comment">//                                      mesi. La data è rappresentata come : anno, mese, giorno, ore, minuti, secondi. </span>
+<a name="l00024"></a>00024 <span class="comment">//                                      Possiede un membro statico "today" che indica il giorno di "oggi". Questo singleton ci permette di gestire al meglio alcune funzioni</span>
+<a name="l00025"></a>00025 <span class="comment">//                                      all'interno della libreria:</span>
+<a name="l00026"></a>00026 <span class="comment">//                                      se in una funzione è necessario conoscere una data si potrà anche passare un oggetto Deltatime che automaticamente, facendo riferimento </span>
+<a name="l00027"></a>00027 <span class="comment">//                                      a today, ricaverà la data in questione. </span>
+<a name="l00028"></a>00028 <span class="comment">//                                      Ecco il metodo per stabilire se l'anno sia o meno bisestile:</span>
+<a name="l00029"></a>00029 <span class="comment">//                                      bisestile: if((_YYYY%4==0 &amp;&amp; _YYYY%100!=0)||(_YYYY%400==0))</span>
+<a name="l00030"></a>00030 <span class="comment">//                                      ovvero se l'anno è divisibile per 4, ma non per cento, oppure se è divisibile per 400.</span>
+<a name="l00031"></a>00031 <span class="comment">//                                      non bisestile: if(_YYYY%400!=0){if((_YYYY%4!=0)||(_YYYY%100==0));}</span>
+<a name="l00032"></a>00032 <span class="comment">//                                      ovvero se non è divisibile per 400 e, o non è divisibile per 4 o non è divisibile per 100.</span>
+<a name="l00033"></a>00033 <span class="comment">//      </span>
+<a name="l00034"></a>00034 <span class="comment">//###################################################################################################</span>
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="comment">//###################################################################################################</span>
+<a name="l00038"></a>00038 <span class="comment">//INCLUDE</span>
+<a name="l00039"></a>00039 <span class="comment">//###################################################################################################</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="preprocessor">#ifndef _TIME_HPP</span>
+<a name="l00042"></a>00042 <span class="preprocessor"></span><span class="preprocessor">#define _TIME_HPP</span>
+<a name="l00043"></a>00043 <span class="preprocessor"></span>
+<a name="l00044"></a>00044 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00045"></a>00045 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00046"></a>00046 <span class="preprocessor">#include &lt;cstdlib&gt;</span>
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 <span class="preprocessor">#include "errorlist.hpp"</span>
+<a name="l00049"></a>00049 <span class="preprocessor">#include "deltatime.hpp"</span>
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 <span class="keyword">using namespace </span>std;
+<a name="l00053"></a>00053 
+<a name="l00065"></a><a class="code" href="classTime.html">00065</a> <span class="keyword">class </span><a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> {
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="keyword">public</span>:
+<a name="l00068"></a>00068                 <a class="code" href="classTime.html#4245e409c7347d1d671858962c2ca3b5" title="costruttore di default">Time</a>();
+<a name="l00069"></a>00069                 <a class="code" href="classTime.html#4245e409c7347d1d671858962c2ca3b5" title="costruttore di default">Time</a>(<span class="keywordtype">int</span> YYYY, <span class="keywordtype">int</span> M, <span class="keywordtype">int</span> D, <span class="keywordtype">int</span> h, <span class="keywordtype">int</span> m, <span class="keywordtype">int</span> s);
+<a name="l00070"></a>00070                 <a class="code" href="classTime.html#4245e409c7347d1d671858962c2ca3b5" title="costruttore di default">Time</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;copia);
+<a name="l00071"></a>00071                 <a class="code" href="classTime.html#1e92dbe963fa3cdd6bea207680f5f6d1" title="distruttore">~Time</a>();
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 <span class="comment">//              FUNZIONI GET</span>
+<a name="l00074"></a>00074                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#8649d611256b625165cf8cd33f7437e2" title="funzione che restituisce l&amp;#39;anno">Get_year</a>()<span class="keyword">const</span>;
+<a name="l00075"></a>00075                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#a68693c2748ab6d46c20ce859aefa35f" title="funzione che restituisce il mese">Get_month</a>()<span class="keyword">const</span>;
+<a name="l00076"></a>00076                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#234977060afdf6414973edc3b5c3f002" title="funzione che restituisce il giorno">Get_day</a>()<span class="keyword">const</span>;
+<a name="l00077"></a>00077                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#9280dda70f7394bf6496d4bc3b46dedc" title="funzione che restituisce le ore">Get_hour</a>()<span class="keyword">const</span>;
+<a name="l00078"></a>00078                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#468c5323e1d314e0373fe19e0582404d" title="funzione che restituisce i minuti">Get_minute</a>()<span class="keyword">const</span>;
+<a name="l00079"></a>00079                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#a4508183857fc116f4963cee028dcdb4" title="funzione che restituisce i secondi">Get_second</a>()<span class="keyword">const</span>;
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="comment">//              FUNZIONI SET</span>
+<a name="l00082"></a>00082                 <span class="keywordtype">void</span> <a class="code" href="classTime.html#7e0cec7571f4c5ac4876c2798ccc2f2b" title="funzione che imposta l&amp;#39;anno ( se 29/2 e anno non bisestile -&amp;gt; 28//2)">Set_year</a>(<span class="keywordtype">int</span> YYYY);
+<a name="l00083"></a>00083                 <span class="keywordtype">void</span> <a class="code" href="classTime.html#97a974a4d1d73ff56dec09165521c877" title="funzione che imposta il mese ( se il giorno preimpostato non è presente nel nuovo...">Set_month</a>(<span class="keywordtype">int</span> M);
+<a name="l00084"></a>00084                 <span class="keywordtype">void</span> <a class="code" href="classTime.html#1610dc39a049616eec68d33390a7103b" title="funzione che imposta il giorno">Set_day</a>(<span class="keywordtype">int</span> D);
+<a name="l00085"></a>00085                 <span class="keywordtype">void</span> <a class="code" href="classTime.html#f71e15f2839368d69e36b3ed664813bd" title="funzione che imposta le ore">Set_hour</a>(<span class="keywordtype">int</span> h);
+<a name="l00086"></a>00086                 <span class="keywordtype">void</span> <a class="code" href="classTime.html#59dcb8b102423e7dc801e0521383f645" title="funzione che imposta i minuti">Set_minute</a>(<span class="keywordtype">int</span> m);
+<a name="l00087"></a>00087                 <span class="keywordtype">void</span> <a class="code" href="classTime.html#d558ac55b012771cf6ba553b923e8ccc" title="funzione che imposta i secondi">Set_second</a>(<span class="keywordtype">int</span> s);
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 <span class="comment">//              FUNZIONI TODAY</span>
+<a name="l00090"></a>00090                 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classTime.html#ddff7fc1b389673f98ff58e06225f9ec" title="funzione che imposta l&amp;#39;oggeto today come copia di un oggetto Time passatogli">Set_today</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;today);
+<a name="l00091"></a>00091                 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classTime.html#ddff7fc1b389673f98ff58e06225f9ec" title="funzione che imposta l&amp;#39;oggeto today come copia di un oggetto Time passatogli">Set_today</a>(<span class="keywordtype">int</span> Y,<span class="keywordtype">int</span> M,<span class="keywordtype">int</span> D,<span class="keywordtype">int</span> h,<span class="keywordtype">int</span> m,<span class="keywordtype">int</span> s);
+<a name="l00092"></a>00092                 <span class="keyword">static</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a>* <a class="code" href="classTime.html#c3f93f083ec4044299a6dc78d30c84a2" title="funzioine che crea il link statico all&amp;#39;oggetto today">Get_today</a>() ;
+<a name="l00093"></a>00093                 <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classTime.html#91c9dc3098fb1290c2d36bb6d616ac52" title="funzione che stampa a video l&amp;#39;oggetto today">Print_today</a>();
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 <span class="comment">//              GIORNI DEL MESE</span>
+<a name="l00096"></a>00096                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#024bf22ff53de2b113c92ef22619f96e" title="funzione che restituisce il numero di giorni del mese passato al metodo">Num_days_M</a>(<span class="keywordtype">int</span> mese) <span class="keyword">const</span>;
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="comment">//              CONTEGGIO GIORNI</span>
+<a name="l00099"></a>00099                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#2f5d795af56ad8d26bb31e6e26afe633" title="funzione che restituisce i giorni dal primo gennaio dell&amp;#39;anno 0">Delta_days_0</a>() <span class="keyword">const</span>;
+<a name="l00100"></a>00100                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#9ef0e0f94c74a3093de4d6e7bf7100de" title="funzione che restituisce i giorni dal primo gennaio dell&amp;#39;anno impostato nell&amp;#39;oggetto...">Delta_days_1</a>() <span class="keyword">const</span>;
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 <span class="comment">//              DIFFERENZE DI TIME</span>
+<a name="l00103"></a>00103                 <span class="keywordtype">int</span> <a class="code" href="classTime.html#edf6697cfca3a3a55676bea6800dd1bd" title="funzione che restituisce la differenza di 2 time in giorni">Delta_days</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;da) <span class="keyword">const</span>;
+<a name="l00104"></a>00104                 <span class="keywordtype">double</span> <a class="code" href="classTime.html#91e8a284ccd954f9ed042ef95f26dc86" title="funzione che restituisce la differenza di 2 time in frazione di mesi">Delta_months</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;da) <span class="keyword">const</span>;
+<a name="l00105"></a>00105                 <span class="keywordtype">double</span> <a class="code" href="classTime.html#a7c3a039f04986849390a814832fea5d" title="funzione che restituisce la differenza di 2 time in frazione di anni">Delta_years</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;da) <span class="keyword">const</span>;
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 <span class="comment">//              METODI DI SOMMA E SOTTRAZIONE</span>
+<a name="l00109"></a>00109 <span class="comment"></span>                <span class="keywordtype">void</span> <a class="code" href="classTime.html#9b6a40142484abe9caf4e920d9aef1f8" title="funzione che permette di sommare ad un time secondi, minuti, ore, giorni, mesi o...">Plus</a>(<span class="keywordtype">int</span> pl, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;a);
+<a name="l00111"></a>00111                 <span class="keywordtype">void</span> <a class="code" href="classTime.html#f64b74886a13727e086b9b7324dfd903" title="funzione che permette di sottrarre a un time secondi, minuti, ore, giorni, mesi o...">Minus</a>(<span class="keywordtype">int</span> pl, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;a);
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 <span class="comment">//              OPERATORI SOMMA-SOTTRAZIONE</span>
+<a name="l00114"></a>00114                 <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> <a class="code" href="classTime.html#435f76d1908e49093e9061a8bdbf9dbf" title="overloading dell&amp;#39;operatore di sottrazione per numero intero di giorni">operator-</a>(<span class="keywordtype">int</span> days) <span class="keyword">const</span>;
+<a name="l00115"></a>00115                 <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> <a class="code" href="classTime.html#146897902e3ddaf83d937694d017fc99" title="overloading dell&amp;#39;operatore di somma per numero intero di giorni">operator+</a>(<span class="keywordtype">int</span> days) <span class="keyword">const</span>;
+<a name="l00116"></a>00116                 <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;<a class="code" href="classTime.html#90849ae8ef9a03f53fa3a84d99a5bd1a" title="overloading dell&amp;#39;operatore iterativo di somma &amp;quot;+=&amp;quot;">operator+=</a>(<span class="keywordtype">int</span> days);
+<a name="l00117"></a>00117                 <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;<a class="code" href="classTime.html#2fa349a6e5cbe9bba609c7ce05e206e1" title="overloading dell&amp;#39;operatore iterativo di sottrazione &amp;quot;-=&amp;quot;">operator-=</a>(<span class="keywordtype">int</span> days);
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 <span class="comment">//              OPERATORI SOMMA-SOTTRAZIONE CON DELTATIME</span>
+<a name="l00120"></a>00120                 <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> <a class="code" href="classTime.html#435f76d1908e49093e9061a8bdbf9dbf" title="overloading dell&amp;#39;operatore di sottrazione per numero intero di giorni">operator-</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;d1) <span class="keyword">const</span>;
+<a name="l00121"></a>00121                 <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> <a class="code" href="classTime.html#435f76d1908e49093e9061a8bdbf9dbf" title="overloading dell&amp;#39;operatore di sottrazione per numero intero di giorni">operator-</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;c) <span class="keyword">const</span>;
+<a name="l00122"></a>00122                 <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> <a class="code" href="classTime.html#146897902e3ddaf83d937694d017fc99" title="overloading dell&amp;#39;operatore di somma per numero intero di giorni">operator+</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;delta) <span class="keyword">const</span>;
+<a name="l00123"></a>00123                 <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;<a class="code" href="classTime.html#90849ae8ef9a03f53fa3a84d99a5bd1a" title="overloading dell&amp;#39;operatore iterativo di somma &amp;quot;+=&amp;quot;">operator+=</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;delta);
+<a name="l00124"></a>00124                 <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;<a class="code" href="classTime.html#2fa349a6e5cbe9bba609c7ce05e206e1" title="overloading dell&amp;#39;operatore iterativo di sottrazione &amp;quot;-=&amp;quot;">operator-=</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;delta);
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 <span class="comment">//              OPERATORE DI ASSEGNAMENTO</span>
+<a name="l00127"></a>00127                 <span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;<a class="code" href="classTime.html#19c86c7175dbbd04af467ae7d151cf36" title="overloading dell&amp;#39;operatore di assegnamento">operator=</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;data);
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 <span class="comment">//              OPERATORI LOGICI</span>
+<a name="l00130"></a>00130                 <span class="keywordtype">bool</span> <a class="code" href="classTime.html#055cdbf83f327ccbd45822098b5bc81e" title="overloading dell&amp;#39;operatore logico di uguaglianza">operator==</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;dat) <span class="keyword">const</span>;
+<a name="l00131"></a>00131                 <span class="keywordtype">bool</span> <a class="code" href="classTime.html#61d474a2643872124e0d5e09e8d19cc8" title="overloading dell&amp;#39;operatore logico di disuguaglianza">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;dat) <span class="keyword">const</span>;
+<a name="l00132"></a>00132                 <span class="keywordtype">bool</span> <a class="code" href="classTime.html#1ba6baf1741363d914738b775ec83458" title="overloading dell&amp;#39;operatore logico &amp;lt;">operator&lt;</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;dat) <span class="keyword">const</span>;
+<a name="l00133"></a>00133                 <span class="keywordtype">bool</span> <a class="code" href="classTime.html#e155afd18e99b0a41ab71bdc53d07f28" title="overloading dell&amp;#39;operatore logico &amp;gt;">operator&gt;</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;dat) <span class="keyword">const</span>;
+<a name="l00134"></a>00134                 <span class="keywordtype">bool</span> <a class="code" href="classTime.html#5ccac0c802b7bbdbdfe2faabd6bc9ac5" title="overloading dell&amp;#39;operatore logico &amp;lt;=">operator&lt;=</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;dat) <span class="keyword">const</span>;
+<a name="l00135"></a>00135                 <span class="keywordtype">bool</span> <a class="code" href="classTime.html#d63bedff8c02e676f4e96f4486360428" title="overloading dell&amp;#39;operatore logico &amp;gt;=">operator&gt;=</a>(<span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;dat) <span class="keyword">const</span>;
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 <span class="comment">//              FRIEND</span>
+<a name="l00139"></a>00139 <span class="comment"></span>                <span class="keyword">friend</span> ostream &amp;<a class="code" href="classTime.html#99ac02fa62b598ea26cd266f0e8fc63c" title="overloading dell&amp;#39;operatore &amp;quot;&amp;lt;&amp;lt;&amp;quot;">operator&lt;&lt;</a>(ostream &amp;os, <span class="keyword">const</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> &amp;dat);
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141         <span class="keyword">private</span>:
+<a name="l00142"></a>00142                 <span class="keywordtype">int</span> _YYYY, _M, _D;
+<a name="l00143"></a>00143                 <span class="keywordtype">int</span> _h, _m, _s;
+<a name="l00144"></a>00144                 <span class="keyword">static</span> <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> *_today;
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 };
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:27 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

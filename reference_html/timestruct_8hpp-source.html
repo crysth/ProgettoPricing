@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione:  File sorgente timestruct.hpp</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+<h1>timestruct.hpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//###################################################################################################</span>
+<a name="l00002"></a>00002 <span class="comment">//      </span>
+<a name="l00003"></a>00003 <span class="comment">//      FILE NAME :                     timestruct.hpp</span>
+<a name="l00004"></a>00004 <span class="comment">//      </span>
+<a name="l00005"></a>00005 <span class="comment">//      FILE TYPE :                     C++ file</span>
+<a name="l00006"></a>00006 <span class="comment">//      </span>
+<a name="l00007"></a>00007 <span class="comment">//      AUTHORS :                       Mariacristina Romano, Gianmaria Enea Roat</span>
+<a name="l00008"></a>00008 <span class="comment">//      </span>
+<a name="l00009"></a>00009 <span class="comment">//      DESCRIPTION :           Declaration of class Timestruct</span>
+<a name="l00010"></a>00010 <span class="comment">//      </span>
+<a name="l00011"></a>00011 <span class="comment">//      FIRST VERSION :         2010/feb/9</span>
+<a name="l00012"></a>00012 <span class="comment">//      </span>
+<a name="l00013"></a>00013 <span class="comment">//      LAST UPTIME :           2010/feb/15</span>
+<a name="l00014"></a>00014 <span class="comment">//      </span>
+<a name="l00015"></a>00015 <span class="comment">//      STATUS :                        final</span>
+<a name="l00016"></a>00016 <span class="comment">//      </span>
+<a name="l00017"></a>00017 <span class="comment">//      COPYRIGHT :                     none</span>
+<a name="l00018"></a>00018 <span class="comment">//      </span>
+<a name="l00019"></a>00019 <span class="comment">//      </span>
+<a name="l00020"></a>00020 <span class="comment">//      DETAILED DESCRIPTION :  Questa classe gestisce vettori di intervalli temporali Deltatime, per cui contiene un membro che rappresenta la lunghezza di tali vettori.</span>
+<a name="l00021"></a>00021 <span class="comment">//                                      Rappresenta una struttura temporale, permette una migliore e piú sicura gestione dei vettori di intervalli di tempi che verranno </span>
+<a name="l00022"></a>00022 <span class="comment">//                                      ampliamente usati all’interno della libreria. </span>
+<a name="l00023"></a>00023 <span class="comment">//                                      Abbiamo implementato un costruttore che permetta di creare un oggetto Timestruct composto da intervalli di eguale durata passando</span>
+<a name="l00024"></a>00024 <span class="comment">//                                      semplicemente un Deltatime e la lughezza del vettore.</span>
+<a name="l00025"></a>00025 <span class="comment">//                                      Un altro costruttore permette di passare istanti temporali: gli intervalli cengono ricavati dalla differenza di tali date e , più</span>
+<a name="l00026"></a>00026 <span class="comment">//                                      precisamente, il primo intervallo corrisponde alla differenza tra il primo istante passato alla funzione e "today".</span>
+<a name="l00027"></a>00027 <span class="comment">//      </span>
+<a name="l00028"></a>00028 <span class="comment">//      </span>
+<a name="l00029"></a>00029 <span class="comment">//      </span>
+<a name="l00030"></a>00030 <span class="comment">//      </span>
+<a name="l00031"></a>00031 <span class="comment">//      </span>
+<a name="l00032"></a>00032 <span class="comment">//#######################################################################################################</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="preprocessor">#ifndef _TIMESTRUCT_HPP</span>
+<a name="l00035"></a>00035 <span class="preprocessor"></span><span class="preprocessor">#define _TIMESTRUCT_HPP</span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span>
+<a name="l00037"></a>00037 <span class="preprocessor">#include "time.hpp"</span>
+<a name="l00038"></a>00038 <span class="preprocessor">#include "deltatime.hpp"</span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00041"></a>00041 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="keyword">using namespace </span>std;
+<a name="l00045"></a>00045 
+<a name="l00051"></a><a class="code" href="classTimestruct.html">00051</a> <span class="keyword">class </span><a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> {
+<a name="l00052"></a>00052         <span class="keyword">public</span>:
+<a name="l00053"></a>00053 <span class="comment">//              COSTRUTTORI~DISTRUTTORE</span>
+<a name="l00054"></a>00054                 <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct</a>();
+<a name="l00055"></a>00055                 <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct</a>(<span class="keywordtype">int</span> dim);
+<a name="l00056"></a>00056                 <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct</a>(<a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> *delta_tempi,<span class="keywordtype">int</span> dim);
+<a name="l00057"></a>00057                 <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct</a>(<a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> **delta_tempi,<span class="keywordtype">int</span> dim);
+<a name="l00058"></a>00058                 <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;delta,<span class="keywordtype">int</span> dim);
+<a name="l00059"></a>00059                 <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct</a>(<a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> *tempi,<span class="keywordtype">int</span> dim);
+<a name="l00060"></a>00060                 <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct</a>(<span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;copy);
+<a name="l00061"></a>00061                 <a class="code" href="classTimestruct.html#81a023f27183c36ce785322a3e41bcda" title="distruttore">~Timestruct</a>();
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="comment">//              FUNZIONI GET</span>
+<a name="l00064"></a>00064                 <span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;<a class="code" href="classTimestruct.html#514bd23d9d0e70b59237c925e8e5b562" title="funzione che restituisce l&amp;#39;i-esimo intervallo">Get_deltatime</a>(<span class="keywordtype">int</span> i);
+<a name="l00065"></a>00065                 <span class="keywordtype">int</span> <a class="code" href="classTimestruct.html#3ad4dbba9f3841fafb48f456cc2fb666" title="funzione che restituisce la dimensione del vettore">Get_dim</a>() <span class="keyword">const</span>;
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="comment">//              FUNZIONI SET</span>
+<a name="l00068"></a>00068                 <span class="keywordtype">void</span> <a class="code" href="classTimestruct.html#8381e5c510225e7b43609e2fc633d02e" title="funzione che imposta l&amp;#39;i-esimo intervallo">Set_deltatime</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;delta, <span class="keywordtype">int</span> i);
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="comment">//              OPERATORE ASSEGNAMENTO</span>
+<a name="l00071"></a>00071                 <span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;<a class="code" href="classTimestruct.html#bbddcfea306859ca5b4f6b3c19ee3dbf" title="overloading dell&amp;#39;operatore di assegnamento">operator=</a>(<span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;copy);
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 <span class="comment">//              OPERATORI LOGICI</span>
+<a name="l00074"></a>00074                 <span class="keywordtype">bool</span> <a class="code" href="classTimestruct.html#abdcc71c06564c1d9be212eb081c702a" title="overloading dell&amp;#39;operatore logico di eguaglianza &amp;quot; == &amp;quot;">operator==</a>(<span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;dat) <span class="keyword">const</span>;
+<a name="l00075"></a>00075                 <span class="keywordtype">bool</span> <a class="code" href="classTimestruct.html#84b74edb28f6e516de354ce1bc276e15" title="overloading dell&amp;#39;operatore logico di diseguaglianza &amp;quot; != &amp;quot;">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;dat) <span class="keyword">const</span>;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 <span class="comment">//              OVERLOAD DEL COUT</span>
+<a name="l00079"></a>00079 <span class="comment"></span>                <span class="keyword">friend</span> ostream &amp;<a class="code" href="classTimestruct.html#7430391a1d823f6c0bba4236f8c30570" title="overloading dell&amp;#39;operatore &amp;quot;&amp;lt;&amp;lt;&amp;quot;">operator&lt;&lt;</a>(ostream &amp;os, <span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;dat);
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081         <span class="keyword">private</span>:
+<a name="l00082"></a>00082                 <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> *_delta_tempi;
+<a name="l00083"></a>00083                 <span class="keywordtype">int</span> _dim;
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085 };
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:28 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

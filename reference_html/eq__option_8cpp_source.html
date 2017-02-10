@@ -1,0 +1,168 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Progetto per il pricing di un&#39;opzione:  File sorgente eq_option.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generato da Doxygen 1.6.1 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Cerca" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Elenco&nbsp;dei&nbsp;file</span></a></li>
+    </ul>
+  </div>
+<h1>eq_option.cpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//###################################################################################################</span>
+<a name="l00002"></a>00002 <span class="comment">//      </span>
+<a name="l00003"></a>00003 <span class="comment">//      FILE NAME :                     eq_option.cpp</span>
+<a name="l00004"></a>00004 <span class="comment">//      </span>
+<a name="l00005"></a>00005 <span class="comment">//      FILE TYPE :                     C++ file</span>
+<a name="l00006"></a>00006 <span class="comment">//      </span>
+<a name="l00007"></a>00007 <span class="comment">//      AUTHORS :                       Mariacristina Romano, Gianmaria Enea Roat</span>
+<a name="l00008"></a>00008 <span class="comment">//      </span>
+<a name="l00009"></a>00009 <span class="comment">//      DESCRIPTION :           Implementation of class Eq_option</span>
+<a name="l00010"></a>00010 <span class="comment">//      </span>
+<a name="l00011"></a>00011 <span class="comment">//      FIRST VERSION :         2010/feb/3</span>
+<a name="l00012"></a>00012 <span class="comment">//      </span>
+<a name="l00013"></a>00013 <span class="comment">//      LAST UPTIME :           2010/mar/6</span>
+<a name="l00014"></a>00014 <span class="comment">//      </span>
+<a name="l00015"></a>00015 <span class="comment">//      STATUS :                        final</span>
+<a name="l00016"></a>00016 <span class="comment">//      </span>
+<a name="l00017"></a>00017 <span class="comment">//      COPYRIGHT :                     none</span>
+<a name="l00018"></a>00018 <span class="comment">//      </span>
+<a name="l00019"></a>00019 <span class="comment">//      </span>
+<a name="l00020"></a>00020 <span class="comment">//      DETAILED DESCRIPTION :  E&apos; la classe madre delle opzioni su un&apos;azione.</span>
+<a name="l00021"></a>00021 <span class="comment">//                                      Rappresenta una generica opzione su un sottostante e quindi la funzione Pay_off(Path) è definita virtual pura.  </span>
+<a name="l00022"></a>00022 <span class="comment">//      </span>
+<a name="l00023"></a>00023 <span class="comment">//      </span>
+<a name="l00024"></a>00024 <span class="comment">//</span>
+<a name="l00025"></a>00025 <span class="comment">//</span>
+<a name="l00026"></a>00026 <span class="comment">//</span>
+<a name="l00027"></a>00027 <span class="comment">//      </span>
+<a name="l00028"></a>00028 <span class="comment">//      </span>
+<a name="l00029"></a>00029 <span class="comment">//      </span>
+<a name="l00030"></a>00030 <span class="comment">//      </span>
+<a name="l00031"></a>00031 <span class="comment">//#######################################################################################################</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &quot;eq_option.hpp&quot;</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="preprocessor">#include &quot;errorlist.hpp&quot;</span>
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="comment">//#######################################################################################################</span>
+<a name="l00037"></a>00037 <span class="comment">//COSTRUTTORI~DISTRUTTORE</span>
+<a name="l00038"></a>00038 <span class="comment">//#######################################################################################################</span>
+<a name="l00039"></a>00039 
+<a name="l00041"></a><a class="code" href="classEq__option.html#adcaf426a62ffef1aeb0b184180aee0fa">00041</a> <a class="code" href="classEq__option.html#adcaf426a62ffef1aeb0b184180aee0fa" title="costruttore di default">Eq_option::Eq_option</a>(): <a class="code" href="classOption.html" title="Classe che rappresenta il generico concetto di opzione.">Option</a>() {};
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 
+<a name="l00045"></a><a class="code" href="classEq__option.html#a67f15c3745b6ba60c04729f2b77b88ef">00045</a> <a class="code" href="classEq__option.html#adcaf426a62ffef1aeb0b184180aee0fa" title="costruttore di default">Eq_option::Eq_option</a>(<span class="keyword">const</span> <a class="code" href="classEq__price.html" title="Classe che rappresenta il prezzo di un&amp;#39;azione in un istante fissato.">Eq_price</a> &amp;eq_price, <span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;times): <a class="code" href="classOption.html" title="Classe che rappresenta il generico concetto di opzione.">Option</a>() {
+<a name="l00046"></a>00046         _eq_price=eq_price;
+<a name="l00047"></a>00047         _times=times;
+<a name="l00048"></a>00048 };
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 
+<a name="l00052"></a><a class="code" href="classEq__option.html#ae3c2a13cc0572d204b267cfe96800d01">00052</a> <a class="code" href="classEq__option.html#adcaf426a62ffef1aeb0b184180aee0fa" title="costruttore di default">Eq_option::Eq_option</a>(<span class="keyword">const</span> <a class="code" href="classEq__option.html" title="Classe che rappresenta il concetto di opzione.">Eq_option</a> &amp;copy){
+<a name="l00053"></a>00053         _times=copy._times;
+<a name="l00054"></a>00054         _eq_price=copy._eq_price;
+<a name="l00055"></a>00055 };
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 
+<a name="l00059"></a><a class="code" href="classEq__option.html#a6c097021a9314a14e319838fdbc18022">00059</a> <a class="code" href="classEq__option.html#a6c097021a9314a14e319838fdbc18022" title="distruttore">Eq_option::~Eq_option</a>(){};
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 <span class="comment">//#######################################################################################################</span>
+<a name="l00062"></a>00062 <span class="comment">//FUNZIONI GET</span>
+<a name="l00063"></a>00063 <span class="comment">//#######################################################################################################</span>
+<a name="l00064"></a>00064 
+<a name="l00066"></a><a class="code" href="classEq__option.html#a77d9212336913cc0ff05e06e1720745f">00066</a> <span class="keyword">const</span> <a class="code" href="classEq__price.html" title="Classe che rappresenta il prezzo di un&amp;#39;azione in un istante fissato.">Eq_price</a> &amp;<a class="code" href="classEq__option.html#a77d9212336913cc0ff05e06e1720745f" title="funzione che restituisce il punto iniziale dell&amp;#39;azione">Eq_option::Get_Eq_price</a>()<span class="keyword"> const</span>{
+<a name="l00067"></a>00067         <span class="keywordflow">return</span> _eq_price;
+<a name="l00068"></a>00068 };
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00072"></a><a class="code" href="classEq__option.html#a4798367e9196704e94fff0299caa0aa6">00072</a> <span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;<a class="code" href="classEq__option.html#a4798367e9196704e94fff0299caa0aa6" title="funzione che restituisce il vettore di tempi">Eq_option::Get_times</a>()<span class="keyword"> const</span>{
+<a name="l00073"></a>00073         <span class="keywordflow">return</span> _times;
+<a name="l00074"></a>00074 };
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 <span class="comment">//#######################################################################################################</span>
+<a name="l00078"></a>00078 <span class="comment">//FUNZIONI SET</span>
+<a name="l00079"></a>00079 <span class="comment">//#######################################################################################################</span>
+<a name="l00080"></a>00080 
+<a name="l00082"></a><a class="code" href="classEq__option.html#ab94c48461e690d4c6c6435863ab57768">00082</a> <span class="keywordtype">void</span> <a class="code" href="classEq__option.html#ab94c48461e690d4c6c6435863ab57768" title="funzione che imposta il punto iniziale dell&amp;#39;azione">Eq_option::Set_Eq_price</a>(<span class="keyword">const</span> <a class="code" href="classEq__price.html" title="Classe che rappresenta il prezzo di un&amp;#39;azione in un istante fissato.">Eq_price</a> &amp;eq_price){
+<a name="l00083"></a>00083         _eq_price=eq_price;
+<a name="l00084"></a>00084 };
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 
+<a name="l00088"></a><a class="code" href="classEq__option.html#a7f0b38366d727197e42111768af94b51">00088</a> <span class="keywordtype">void</span> <a class="code" href="classEq__option.html#a7f0b38366d727197e42111768af94b51" title="funzione che imposta il vettore di tempi">Eq_option::Set_times</a>(<span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;times){
+<a name="l00089"></a>00089         _times=times;
+<a name="l00090"></a>00090 };
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 <span class="comment">//#######################################################################################################</span>
+<a name="l00093"></a>00093 <span class="comment">//OPERATORE ASSEGNAMENTO</span>
+<a name="l00094"></a>00094 <span class="comment">//#######################################################################################################</span>
+<a name="l00095"></a>00095 
+<a name="l00097"></a><a class="code" href="classEq__option.html#a16b6479c95be0d3d7b59290e7975ebae">00097</a> <a class="code" href="classEq__option.html" title="Classe che rappresenta il concetto di opzione.">Eq_option</a> &amp;<a class="code" href="classEq__option.html#a16b6479c95be0d3d7b59290e7975ebae" title="overloading dell&amp;#39;operatore di assegnamento per la classe figlia: Eq_op_performance_with_corridor...">Eq_option::operator=</a>(<a class="code" href="classEq__op__performance__with__corridor.html" title="Classe che rappresenta il contratto dell&amp;#39;opzione in esame.">Eq_op_performance_with_corridor</a> &amp;obj){
+<a name="l00098"></a>00098                 cout&lt;&lt;<span class="stringliteral">&quot;sono in = Eq_option\n&quot;</span>;
+<a name="l00099"></a>00099         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00100"></a>00100 };
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 
+<a name="l00104"></a><a class="code" href="classEq__option.html#ada0c8562e5d13a2664fd73c4813244bf">00104</a> <a class="code" href="classEq__option.html" title="Classe che rappresenta il concetto di opzione.">Eq_option</a> &amp;<a class="code" href="classEq__option.html#a16b6479c95be0d3d7b59290e7975ebae" title="overloading dell&amp;#39;operatore di assegnamento per la classe figlia: Eq_op_performance_with_corridor...">Eq_option::operator=</a>(<a class="code" href="classEq__op__plainvanilla.html" title="Classe che rappresenta un&amp;#39;opzione call di tipo plain-vanilla.">Eq_op_plainvanilla</a> &amp;obj){
+<a name="l00105"></a>00105                 cout&lt;&lt;<span class="stringliteral">&quot;sono in = Eq_option\n&quot;</span>;
+<a name="l00106"></a>00106         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00107"></a>00107 };
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 
+<a name="l00111"></a><a class="code" href="classEq__option.html#a7c6ed970db3684dfe2ad0189c15a63e9">00111</a> <a class="code" href="classEq__option.html" title="Classe che rappresenta il concetto di opzione.">Eq_option</a> &amp;<a class="code" href="classEq__option.html#a16b6479c95be0d3d7b59290e7975ebae" title="overloading dell&amp;#39;operatore di assegnamento per la classe figlia: Eq_op_performance_with_corridor...">Eq_option::operator=</a>(<a class="code" href="classEq__op__w.html" title="Classe che rappresenta un&amp;#39;opzione utilizzata per il controllo della libreria...">Eq_op_w</a> &amp;obj){
+<a name="l00112"></a>00112                 cout&lt;&lt;<span class="stringliteral">&quot;sono in = Eq_option\n&quot;</span>;
+<a name="l00113"></a>00113         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00114"></a>00114 };
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 <span class="comment">//################################################################################################################</span>
+<a name="l00117"></a>00117 
+</pre></div></div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Friend</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr size="1"/><address style="text-align: right;"><small>Generato il Wed May 5 15:16:33 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

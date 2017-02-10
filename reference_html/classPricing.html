@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione: Riferimenti per la classe Pricing</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classi</span></a></li>
+      <li><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Elenco&nbsp;dei&nbsp;tipi&nbsp;composti</span></a></li>
+      <li><a href="hierarchy.html"><span>Gerarchia&nbsp;delle&nbsp;classi</span></a></li>
+      <li><a href="functions.html"><span>Membri&nbsp;dei&nbsp;composti</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Riferimenti per la classe Pricing</h1><!-- doxytag: class="Pricing" -->Classe ad hoc per la risoluzione del tema d'esame.  
+<a href="#_details">Continua...</a>
+<p>
+<code>#include &lt;<a class="el" href="pricing_8hpp-source.html">pricing.hpp</a>&gt;</code>
+<p>
+
+<p>
+<a href="classPricing-members.html">Elenco di tutti i membri.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Membri pubblici</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="1c97a95da9020af84c7f3109119506de"></a><!-- doxytag: member="Pricing::Pricing" ref="1c97a95da9020af84c7f3109119506de" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPricing.html#1c97a95da9020af84c7f3109119506de">Pricing</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">costruttore di default <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="9d79d9e9a7d2456f71ec84e4e0400dff"></a><!-- doxytag: member="Pricing::Pricing" ref="9d79d9e9a7d2456f71ec84e4e0400dff" args="(int N, double S_O, double strikeprice, double rate, double volatility, Timestruct T_maturity, double lambda, int *m, int dim_m, string name_process, const char *nome_file_out)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPricing.html#9d79d9e9a7d2456f71ec84e4e0400dff">Pricing</a> (int N, double S_O, double strikeprice, double rate, double volatility, <a class="el" href="classTimestruct.html">Timestruct</a> T_maturity, double lambda, int *m, int dim_m, string name_process, const char *nome_file_out)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Costruttore che permette di studiare la variazione del prezzo dell'opzione per diversi valori di maturity time. La simulazione viene eseguita per ogni valore di m. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="00ca6576b715d67197ca5e8be74bf1e8"></a><!-- doxytag: member="Pricing::Pricing" ref="00ca6576b715d67197ca5e8be74bf1e8" args="(int N, double S_O, double strikeprice, double rate, double volatility, const Deltatime &amp;T_maturity, double *lambda, int dim_lambda, int *m, int dim_m, string name_process, const char *nome_file_out)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPricing.html#00ca6576b715d67197ca5e8be74bf1e8">Pricing</a> (int N, double S_O, double strikeprice, double rate, double volatility, const <a class="el" href="classDeltatime.html">Deltatime</a> &amp;T_maturity, double *lambda, int dim_lambda, int *m, int dim_m, string name_process, const char *nome_file_out)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Costruttore che permette di studiare la variazione del prezzo dell'opzione per diversi valori di lambda. La simulazione viene eseguita per ogni valore di m. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b60ff7edf432114783a54e8ea4850fdb"></a><!-- doxytag: member="Pricing::Pricing" ref="b60ff7edf432114783a54e8ea4850fdb" args="(int *N, int dim_N, double S_O, double strikeprice, double rate, double volatility, const Deltatime &amp;T_maturity, double lambda, int m, string name_process, const char *nome_file_out)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPricing.html#b60ff7edf432114783a54e8ea4850fdb">Pricing</a> (int *N, int dim_N, double S_O, double strikeprice, double rate, double volatility, const <a class="el" href="classDeltatime.html">Deltatime</a> &amp;T_maturity, double lambda, int m, string name_process, const char *nome_file_out)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Costruttore che permette di studiare l'andamento dell'errore in dipendenza dal numero di simulazioni N. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="86d3dfad00eab6225f44657cfa4f2308"></a><!-- doxytag: member="Pricing::Pricing" ref="86d3dfad00eab6225f44657cfa4f2308" args="(int N, double S_O, double strikeprice, double rate, double *volatility, int dim_vol, const Deltatime &amp;T_maturity, double lambda, int *m, int dim_m, string name_process, const char *nome_file_out)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPricing.html#86d3dfad00eab6225f44657cfa4f2308">Pricing</a> (int N, double S_O, double strikeprice, double rate, double *volatility, int dim_vol, const <a class="el" href="classDeltatime.html">Deltatime</a> &amp;T_maturity, double lambda, int *m, int dim_m, string name_process, const char *nome_file_out)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Costruttore che permette di studiare la variazione del prezzo dell'opzione per diversi valori di volatilità. La simulazione viene eseguita per ogni valore di m. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3d94efcd9d5a47ebf29838422dee9d5b"></a><!-- doxytag: member="Pricing::Pricing" ref="3d94efcd9d5a47ebf29838422dee9d5b" args="(int N, double S_O, double strikeprice, double rate, double volatility, Timestruct T_maturity, int *m, int dim_m, const char *nome_file_out)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPricing.html#3d94efcd9d5a47ebf29838422dee9d5b">Pricing</a> (int N, double S_O, double strikeprice, double rate, double volatility, <a class="el" href="classTimestruct.html">Timestruct</a> T_maturity, int *m, int dim_m, const char *nome_file_out)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Costruttore che permette di studiare la variazione del prezzo di un'opzione plain-vanilla. La simulazione viene eseguita per ogni valore di m. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ab02e736be36bd90d02406d6d8a75a1b"></a><!-- doxytag: member="Pricing::Pricing" ref="ab02e736be36bd90d02406d6d8a75a1b" args="(int N, double S_O, double rate, double volatility, const Deltatime &amp;T_maturity, int *m, int dim_m, const char *nome_file_out)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPricing.html#ab02e736be36bd90d02406d6d8a75a1b">Pricing</a> (int N, double S_O, double rate, double volatility, const <a class="el" href="classDeltatime.html">Deltatime</a> &amp;T_maturity, int *m, int dim_m, const char *nome_file_out)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Costruttore che permette di effettuare un test della libreria e del generatore di numeri casuali tramite l'opzione Eq_op_w.La simulazione viene eseguita per ogni valore di m. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="429fb26fbc0e1ca8c4971bacd648463e"></a><!-- doxytag: member="Pricing::~Pricing" ref="429fb26fbc0e1ca8c4971bacd648463e" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPricing.html#429fb26fbc0e1ca8c4971bacd648463e">~Pricing</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">distruttore <br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descrizione dettagliata</h2>
+Classe di livello 9. <br>
+ Classe ad hoc per la risoluzione del tema d'esame. Grazie a questa classe è possibile ottenere un file di testo (passatone il nome al costruttore) nel quale vengono stampati direttamente dalla classe i risultati della simulazione. Al costruttore vengono passati tutti i parametri fissati (in double o int) e tutti i parametri che si vogliono far variare (come vettori di double, int o deltatime); al costruttore viene passato anche il tipo di processo (come string) che si vuole utilizzare per l'evoluzione dell'azione. Ogni costruttore rappresenta una delle simulazioni richieste dal tema d'esame. <br>
+ 1. Costruttore che permette di studiare la variazione del prezzo dell'opzione per diversi valori di maturity time. La simulazione viene eseguita per ogni valore di m. <br>
+ 2. Costruttore che permette di studiare la variazione del prezzo dell'opzione per diversi valori di lambda. La simulazione viene eseguita per ogni valore di m. <br>
+ 3. Costruttore che permette di studiare l'andamento dell'errore in dipendenza dal numero di simulazioni N. <br>
+ 4. Costruttore che permette di studiare la variazione del prezzo dell'opzione per diversi valori di volatilità. La simulazione viene eseguita per ogni valore di m. <br>
+ 5. Costruttore che permette di studiare la variazione del prezzo di un'opzione plain-vanilla. La simulazione viene eseguita per ogni valore di m. <br>
+ 6. Costruttore che permette di effettuare un test della libreria e del generatore di numeri casuali tramite l'opzione Eq_op_w.La simulazione viene eseguita per ogni valore di m. <br>
+ Questa classe permette un utilizzo rapido e pratico di tutta la libreria. <br>
+ Abbiamo volutamente evitato l'implementazione di un costruttore generico, implementando invece costruttori mirati ai problemi del tema d'esame, per ottimizzare l'esecuzione di ogni simulazione. 
+<p>Definizione alla linea <a class="el" href="pricing_8hpp-source.html#l00091">91</a> del file <a class="el" href="pricing_8hpp-source.html">pricing.hpp</a>.</p>
+<hr>La documentazione per questa classe è stata generata a partire dai seguenti file:<ul>
+<li><a class="el" href="pricing_8hpp-source.html">pricing.hpp</a><li><a class="el" href="pricing_8cpp-source.html">pricing.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:33 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione: Riferimenti per la classe Eq_process</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classi</span></a></li>
+      <li><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Elenco&nbsp;dei&nbsp;tipi&nbsp;composti</span></a></li>
+      <li><a href="hierarchy.html"><span>Gerarchia&nbsp;delle&nbsp;classi</span></a></li>
+      <li><a href="functions.html"><span>Membri&nbsp;dei&nbsp;composti</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Riferimenti per la classe Eq_process</h1><!-- doxytag: class="Eq_process" --><!-- doxytag: inherits="Process" -->Classe che rappresenta il generico concetto di processo relativo ad un'azione.  
+<a href="#_details">Continua...</a>
+<p>
+<code>#include &lt;<a class="el" href="eq__process_8hpp-source.html">eq_process.hpp</a>&gt;</code>
+<p>
+<div class="dynheader">
+Diagramma delle classi per Eq_process</div>
+<div class="dynsection">
+
+<p><center><img src="classEq__process.png" usemap="#Eq_process_map" border="0" alt=""></center>
+<map name="Eq_process_map">
+<area href="classProcess.html" alt="Process" shape="rect" coords="96,0,279,24">
+<area href="classEq__process__lognormal__esatto.html" alt="Eq_process_lognormal_esatto" shape="rect" coords="0,112,183,136">
+<area href="classEq__process__lognormal__eulero.html" alt="Eq_process_lognormal_eulero" shape="rect" coords="193,112,376,136">
+<area href="classEq__process__lognormal__binary.html" alt="Eq_process_lognormal_binary" shape="rect" coords="0,168,183,192">
+</map>
+</div>
+
+<p>
+<a href="classEq__process-members.html">Elenco di tutti i membri.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Membri pubblici</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2fa68e31a0093622c2bf909b1f1f97ec"></a><!-- doxytag: member="Eq_process::Eq_process" ref="2fa68e31a0093622c2bf909b1f1f97ec" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#2fa68e31a0093622c2bf909b1f1f97ec">Eq_process</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">costruttore di default <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b55db14c7c259c1e21461466dca8507c"></a><!-- doxytag: member="Eq_process::~Eq_process" ref="b55db14c7c259c1e21461466dca8507c" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#b55db14c7c259c1e21461466dca8507c">~Eq_process</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">distruttore <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="f2f8b5a90eb34c78fbe2c62010a3b490"></a><!-- doxytag: member="Eq_process::Evol" ref="f2f8b5a90eb34c78fbe2c62010a3b490" args="(Eq_price *A, Eq_price *B, N_rand *w) const =0" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#f2f8b5a90eb34c78fbe2c62010a3b490">Evol</a> (<a class="el" href="classEq__price.html">Eq_price</a> *A, <a class="el" href="classEq__price.html">Eq_price</a> *B, <a class="el" href="classN__rand.html">N_rand</a> *w) const =0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che fa evolvere un'azione al tempo t1 in un'altra al tempo t2 ( virtual pura) <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="540dfa0969eea53528f7dc407235a2c9"></a><!-- doxytag: member="Eq_process::Get_w" ref="540dfa0969eea53528f7dc407235a2c9" args="() const =0" -->
+virtual <a class="el" href="classN__rand.html">N_rand</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#540dfa0969eea53528f7dc407235a2c9">Get_w</a> () const =0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il numero casuale estratto da una distribuzione ( virtual pura, l'implementazione è lasciata alle figlie) <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="04177731ad1e2b8eebedc4dadf63efab"></a><!-- doxytag: member="Eq_process::Anti_w" ref="04177731ad1e2b8eebedc4dadf63efab" args="(N_rand *w) const " -->
+virtual <a class="el" href="classN__rand.html">N_rand</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#04177731ad1e2b8eebedc4dadf63efab">Anti_w</a> (<a class="el" href="classN__rand.html">N_rand</a> *w) const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce l'antitetico del numero casuale <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9c368adbe970803870d020d6a95102c"></a><!-- doxytag: member="Eq_process::Get_rand_gen" ref="a9c368adbe970803870d020d6a95102c" args="() const " -->
+<a class="el" href="classRand__gen.html">Rand_gen</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#a9c368adbe970803870d020d6a95102c">Get_rand_gen</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il generatore di numeri casuali <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a30373d3166389857c5c41355eb6efeb"></a><!-- doxytag: member="Eq_process::Set_rand_gen" ref="a30373d3166389857c5c41355eb6efeb" args="(Rand_gen *ra)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#a30373d3166389857c5c41355eb6efeb">Set_rand_gen</a> (<a class="el" href="classRand__gen.html">Rand_gen</a> *ra)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che imposta il generatore di numeri casuali <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ddd386a0f6f7cdfb3a0f1969a26c44cb"></a><!-- doxytag: member="Eq_process::Set_rand_gen" ref="ddd386a0f6f7cdfb3a0f1969a26c44cb" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#ddd386a0f6f7cdfb3a0f1969a26c44cb">Set_rand_gen</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il generatore di numeri casuali di default <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="8fa80b31e709c600181a17e6504310a3"></a><!-- doxytag: member="Eq_process::operator=" ref="8fa80b31e709c600181a17e6504310a3" args="(Eq_process_lognormal_eulero &amp;obj)" -->
+virtual <a class="el" href="classEq__process.html">Eq_process</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#8fa80b31e709c600181a17e6504310a3">operator=</a> (<a class="el" href="classEq__process__lognormal__eulero.html">Eq_process_lognormal_eulero</a> &amp;obj)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">overloading dell'operatore di assegnamento per la classe figlia: <a class="el" href="classEq__process__lognormal__eulero.html" title="Classe che rappresenta un processo lognormale valutato con la formula approssimata...">Eq_process_lognormal_eulero</a> <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="f5047b4052d40bd8e2841283ce8c389e"></a><!-- doxytag: member="Eq_process::operator=" ref="f5047b4052d40bd8e2841283ce8c389e" args="(Eq_process_lognormal_esatto &amp;obj)" -->
+virtual <a class="el" href="classEq__process.html">Eq_process</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__process.html#f5047b4052d40bd8e2841283ce8c389e">operator=</a> (<a class="el" href="classEq__process__lognormal__esatto.html">Eq_process_lognormal_esatto</a> &amp;obj)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">overloading dell'operatore di assegnamento per la classe figlia: <a class="el" href="classEq__process__lognormal__esatto.html" title="Classe che rappresenta un processo lognormale esatto dipendente da una random variabile...">Eq_process_lognormal_esatto</a> <br></td></tr>
+<tr><td colspan="2"><br><h2>Attributi privati</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="d84197da1919546cd02980931b075a59"></a><!-- doxytag: member="Eq_process::_ra" ref="d84197da1919546cd02980931b075a59" args="" -->
+<a class="el" href="classRand__gen.html">Rand_gen</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>_ra</b></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Descrizione dettagliata</h2>
+Classe di livello 5.<br>
+ E' la classe madre dei processi che regolano l'evoluzione temporale (da uno stato A di partenza ad uno stato di arrivo B) di un'azione secondo funzioni dipendenti da una random variabile.<br>
+ Pur rimanendo una classe prevalentemente astratta, permette di gestire i numeri casuali necessari alla funzione che regola l'evoluzione.<br>
+ Permettere di scegliere il generatore di numeri casuali. 
+<p>Definizione alla linea <a class="el" href="eq__process_8hpp-source.html#l00054">54</a> del file <a class="el" href="eq__process_8hpp-source.html">eq_process.hpp</a>.</p>
+<hr>La documentazione per questa classe è stata generata a partire dai seguenti file:<ul>
+<li><a class="el" href="eq__process_8hpp-source.html">eq_process.hpp</a><li><a class="el" href="eq__process_8cpp-source.html">eq_process.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:31 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

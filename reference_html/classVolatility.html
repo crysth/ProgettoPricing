@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione: Riferimenti per la classe Volatility</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classi</span></a></li>
+      <li><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Elenco&nbsp;dei&nbsp;tipi&nbsp;composti</span></a></li>
+      <li><a href="hierarchy.html"><span>Gerarchia&nbsp;delle&nbsp;classi</span></a></li>
+      <li><a href="functions.html"><span>Membri&nbsp;dei&nbsp;composti</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Riferimenti per la classe Volatility</h1><!-- doxytag: class="Volatility" -->Classe che rappresenta il concetto di curva di volatilità di un'azione.  
+<a href="#_details">Continua...</a>
+<p>
+<code>#include &lt;<a class="el" href="volatility_8hpp-source.html">volatility.hpp</a>&gt;</code>
+<p>
+<div class="dynheader">
+Diagramma delle classi per Volatility</div>
+<div class="dynsection">
+
+<p><center><img src="classVolatility.png" usemap="#Volatility_map" border="0" alt=""></center>
+<map name="Volatility_map">
+<area href="classVol__std.html" alt="Vol_std" shape="rect" coords="0,56,60,80">
+</map>
+</div>
+
+<p>
+<a href="classVolatility-members.html">Elenco di tutti i membri.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Membri pubblici</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3d9aaf3913878022f9129a625e0e0f45"></a><!-- doxytag: member="Volatility::Volatility" ref="3d9aaf3913878022f9129a625e0e0f45" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVolatility.html#3d9aaf3913878022f9129a625e0e0f45">Volatility</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">costruttore di default <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="d350254a6ab0ee967cac72a6af117399"></a><!-- doxytag: member="Volatility::~Volatility" ref="d350254a6ab0ee967cac72a6af117399" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVolatility.html#d350254a6ab0ee967cac72a6af117399">~Volatility</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">distruttore <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="4a239cffdbd0fd4f7349236599424581"></a><!-- doxytag: member="Volatility::Get_vol" ref="4a239cffdbd0fd4f7349236599424581" args="(const Time &amp;t1, const Time &amp;t2) const =0" -->
+virtual double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVolatility.html#4a239cffdbd0fd4f7349236599424581">Get_vol</a> (const <a class="el" href="classTime.html">Time</a> &amp;t1, const <a class="el" href="classTime.html">Time</a> &amp;t2) const =0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce la volatilità tra i tempi t1 e t2 (virtual pura) <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="59947dbc3422e5d1131cd560b8787b55"></a><!-- doxytag: member="Volatility::operator=" ref="59947dbc3422e5d1131cd560b8787b55" args="(Vol_std &amp;obj)" -->
+virtual <a class="el" href="classVolatility.html">Volatility</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVolatility.html#59947dbc3422e5d1131cd560b8787b55">operator=</a> (<a class="el" href="classVol__std.html">Vol_std</a> &amp;obj)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">operatore di assegnamento per la classe figlia: <a class="el" href="classVol__std.html" title="Classe che rappresenta una curva di volatilità costante.">Vol_std</a> <br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descrizione dettagliata</h2>
+Classe di livello 2. <br>
+ Classe astratta che traduce il concetto di volatilitá di un’azione, è quindi la classe madre delle curve di volatilità. <br>
+ E' una classe puramente astratta in cui l'unico metodo implementato è l'overloading dell'operatore di assegnamento per la classe figlia. <br>
+ La sua funzione principale (Get_vol) viene implementata a partire dal concetto temporale espresso dalla classe <a class="el" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a>. 
+<p>Definizione alla linea <a class="el" href="volatility_8hpp-source.html#l00048">48</a> del file <a class="el" href="volatility_8hpp-source.html">volatility.hpp</a>.</p>
+<hr>La documentazione per questa classe è stata generata a partire dai seguenti file:<ul>
+<li><a class="el" href="volatility_8hpp-source.html">volatility.hpp</a><li><a class="el" href="volatility_8cpp-source.html">volatility.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:36 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

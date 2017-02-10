@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione: Riferimenti per la classe Eq_pricer</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classi</span></a></li>
+      <li><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Elenco&nbsp;dei&nbsp;tipi&nbsp;composti</span></a></li>
+      <li><a href="hierarchy.html"><span>Gerarchia&nbsp;delle&nbsp;classi</span></a></li>
+      <li><a href="functions.html"><span>Membri&nbsp;dei&nbsp;composti</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Riferimenti per la classe Eq_pricer</h1><!-- doxytag: class="Eq_pricer" -->Classe che rappresenta un generico metodo di simulazione, per ottenere i prezzi di un'opzione.  
+<a href="#_details">Continua...</a>
+<p>
+<code>#include &lt;<a class="el" href="eq__pricer_8hpp-source.html">eq_pricer.hpp</a>&gt;</code>
+<p>
+<div class="dynheader">
+Diagramma delle classi per Eq_pricer</div>
+<div class="dynsection">
+
+<p><center><img src="classEq__pricer.png" usemap="#Eq_pricer_map" border="0" alt=""></center>
+<map name="Eq_pricer_map">
+<area href="classEq__pricer__montecarlo.html" alt="Eq_pricer_montecarlo" shape="rect" coords="0,56,136,80">
+</map>
+</div>
+
+<p>
+<a href="classEq__pricer-members.html">Elenco di tutti i membri.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Membri pubblici</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="0daa09b6154003b55c39a35089935ff4"></a><!-- doxytag: member="Eq_pricer::Eq_pricer" ref="0daa09b6154003b55c39a35089935ff4" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#0daa09b6154003b55c39a35089935ff4">Eq_pricer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">costruttore di default <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="8cf298432be08cd0469b885ee0aaf41b"></a><!-- doxytag: member="Eq_pricer::~Eq_pricer" ref="8cf298432be08cd0469b885ee0aaf41b" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#8cf298432be08cd0469b885ee0aaf41b">~Eq_pricer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">distruttore <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a79c104c56b9039983795fc290f57b15"></a><!-- doxytag: member="Eq_pricer::Compute_price" ref="a79c104c56b9039983795fc290f57b15" args="()=0" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#a79c104c56b9039983795fc290f57b15">Compute_price</a> ()=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che valuta il prezzo dell'opzione ( virtual pura) <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ff7a1058b6b004282b620011263f2d42"></a><!-- doxytag: member="Eq_pricer::Get_price" ref="ff7a1058b6b004282b620011263f2d42" args="() const " -->
+<a class="el" href="classPrice.html">Price</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#ff7a1058b6b004282b620011263f2d42">Get_price</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il prezzo <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="860982178b916388d0878d0b766b07e0"></a><!-- doxytag: member="Eq_pricer::Get_Eq_option" ref="860982178b916388d0878d0b766b07e0" args="() const " -->
+<a class="el" href="classEq__option.html">Eq_option</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#860982178b916388d0878d0b766b07e0">Get_Eq_option</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce l'opzione di riferimento <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="e32ef73dd340a1436d1f427b8838a038"></a><!-- doxytag: member="Eq_pricer::Get_process" ref="e32ef73dd340a1436d1f427b8838a038" args="() const " -->
+<a class="el" href="classProcess.html">Process</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#e32ef73dd340a1436d1f427b8838a038">Get_process</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il processo utilizzato <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3d453fdbb742daab2f16d4f42bc21255"></a><!-- doxytag: member="Eq_pricer::Set_Eq_option" ref="3d453fdbb742daab2f16d4f42bc21255" args="(Eq_option *eq_option)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#3d453fdbb742daab2f16d4f42bc21255">Set_Eq_option</a> (<a class="el" href="classEq__option.html">Eq_option</a> *eq_option)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che imposta l'opzione di riferimento <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="c389f4b0f899d36b1ae834b6a06c12d2"></a><!-- doxytag: member="Eq_pricer::Set_price" ref="c389f4b0f899d36b1ae834b6a06c12d2" args="(const Price &amp;price)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#c389f4b0f899d36b1ae834b6a06c12d2">Set_price</a> (const <a class="el" href="classPrice.html">Price</a> &amp;price)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che imposta il prezzo <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a93b59194ebc4f57319b0c77e138f846"></a><!-- doxytag: member="Eq_pricer::Set_process" ref="a93b59194ebc4f57319b0c77e138f846" args="(Process *process)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#a93b59194ebc4f57319b0c77e138f846">Set_process</a> (<a class="el" href="classProcess.html">Process</a> *process)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzionie che imposta il processo da utilizzare <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a430ac9ea7d3952d0b94748377579a04"></a><!-- doxytag: member="Eq_pricer::operator=" ref="a430ac9ea7d3952d0b94748377579a04" args="(Eq_pricer_montecarlo &amp;obj)" -->
+virtual <a class="el" href="classEq__pricer.html">Eq_pricer</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEq__pricer.html#a430ac9ea7d3952d0b94748377579a04">operator=</a> (<a class="el" href="classEq__pricer__montecarlo.html">Eq_pricer_montecarlo</a> &amp;obj)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">overloading dell'operatore di assegnamento per la classe figlia: <a class="el" href="classEq__pricer__montecarlo.html" title="Classe che rappresenta il metodo di montecarlo per il pricing di un&#39;opzione.">Eq_pricer_montecarlo</a> <br></td></tr>
+<tr><td colspan="2"><br><h2>Attributi privati</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="5a04aed4d468b4a4039ae30e8ddeb857"></a><!-- doxytag: member="Eq_pricer::_eq_option" ref="5a04aed4d468b4a4039ae30e8ddeb857" args="" -->
+<a class="el" href="classEq__option.html">Eq_option</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>_eq_option</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="64d680f05bf468070e05c9e757585b2d"></a><!-- doxytag: member="Eq_pricer::_process" ref="64d680f05bf468070e05c9e757585b2d" args="" -->
+<a class="el" href="classProcess.html">Process</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>_process</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2a241d9a3c85e8de6e5e97164f6620eb"></a><!-- doxytag: member="Eq_pricer::_price" ref="2a241d9a3c85e8de6e5e97164f6620eb" args="" -->
+<a class="el" href="classPrice.html">Price</a>&nbsp;</td><td class="memItemRight" valign="bottom"><b>_price</b></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Descrizione dettagliata</h2>
+Classe di livello 8. <br>
+ E' una classe astratta, madre delle simulazioni dei prezzi di un'opzione. Il metodo Compute_price è dichiarato virtual puro. <br>
+ Consente di impostare e ottenere il prezzo e i puntatori all'opzione considerata e al processo utilizzato. 
+<p>Definizione alla linea <a class="el" href="eq__pricer_8hpp-source.html#l00051">51</a> del file <a class="el" href="eq__pricer_8hpp-source.html">eq_pricer.hpp</a>.</p>
+<hr>La documentazione per questa classe è stata generata a partire dai seguenti file:<ul>
+<li><a class="el" href="eq__pricer_8hpp-source.html">eq_pricer.hpp</a><li><a class="el" href="eq__pricer_8cpp-source.html">eq_pricer.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:30 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

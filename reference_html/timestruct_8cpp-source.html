@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione:  File sorgente timestruct.cpp</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+<h1>timestruct.cpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//###################################################################################################</span>
+<a name="l00002"></a>00002 <span class="comment">//      </span>
+<a name="l00003"></a>00003 <span class="comment">//      FILE NAME :                     timestruct.cpp</span>
+<a name="l00004"></a>00004 <span class="comment">//      </span>
+<a name="l00005"></a>00005 <span class="comment">//      FILE TYPE :                     C++ file</span>
+<a name="l00006"></a>00006 <span class="comment">//      </span>
+<a name="l00007"></a>00007 <span class="comment">//      AUTHORS :                       Mariacristina Romano, Gianmaria Enea Roat</span>
+<a name="l00008"></a>00008 <span class="comment">//      </span>
+<a name="l00009"></a>00009 <span class="comment">//      DESCRIPTION :           Implementation of class Timestruct</span>
+<a name="l00010"></a>00010 <span class="comment">//      </span>
+<a name="l00011"></a>00011 <span class="comment">//      FIRST VERSION :         2010/feb/9</span>
+<a name="l00012"></a>00012 <span class="comment">//      </span>
+<a name="l00013"></a>00013 <span class="comment">//      LAST UPTIME :           2010/feb/15</span>
+<a name="l00014"></a>00014 <span class="comment">//      </span>
+<a name="l00015"></a>00015 <span class="comment">//      STATUS :                        final</span>
+<a name="l00016"></a>00016 <span class="comment">//      </span>
+<a name="l00017"></a>00017 <span class="comment">//      COPYRIGHT :                     none</span>
+<a name="l00018"></a>00018 <span class="comment">//      </span>
+<a name="l00019"></a>00019 <span class="comment">//      </span>
+<a name="l00020"></a>00020 <span class="comment">//      DETAILED DESCRIPTION :  Questa classe gestisce vettori di intervalli temporali Deltatime, per cui contiene un membro che rappresenta la lunghezza di tali vettori.</span>
+<a name="l00021"></a>00021 <span class="comment">//                                      Rappresenta una struttura temporale, permette una migliore e piú sicura gestione dei vettori di intervalli di tempi che verranno </span>
+<a name="l00022"></a>00022 <span class="comment">//                                      ampliamente usati all’interno della libreria. </span>
+<a name="l00023"></a>00023 <span class="comment">//                                      Abbiamo implementato un costruttore che permetta di creare un oggetto Timestruct composto da intervalli di eguale durata passando</span>
+<a name="l00024"></a>00024 <span class="comment">//                                      semplicemente un Deltatime e la lughezza del vettore.</span>
+<a name="l00025"></a>00025 <span class="comment">//                                      Un altro costruttore permette di passare istanti temporali: gli intervalli cengono ricavati dalla differenza di tali date e , più</span>
+<a name="l00026"></a>00026 <span class="comment">//                                      precisamente, il primo intervallo corrisponde alla differenza tra il primo istante passato alla funzione e "today".</span>
+<a name="l00027"></a>00027 <span class="comment">//      </span>
+<a name="l00028"></a>00028 <span class="comment">//      </span>
+<a name="l00029"></a>00029 <span class="comment">//      </span>
+<a name="l00030"></a>00030 <span class="comment">//      </span>
+<a name="l00031"></a>00031 <span class="comment">//#######################################################################################################</span>
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="preprocessor">#include "timestruct.hpp"</span>
+<a name="l00034"></a>00034 <span class="preprocessor">#include "errorlist.hpp"</span>
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="comment">//################################################################################################################</span>
+<a name="l00037"></a>00037 <span class="comment">//COSTRUTTORI~DISTRUTTORE</span>
+<a name="l00038"></a>00038 <span class="comment">//################################################################################################################</span>
+<a name="l00039"></a>00039 
+<a name="l00041"></a><a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103">00041</a> <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct::Timestruct</a>(): _dim(0){
+<a name="l00042"></a>00042         _delta_tempi=NULL;
+<a name="l00043"></a>00043 };
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 
+<a name="l00047"></a><a class="code" href="classTimestruct.html#7eead2930b20e7466f85ad95a4d9617e">00047</a> <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct::Timestruct</a>(<span class="keywordtype">int</span> dim): _dim((dim&gt;0)?dim:0){
+<a name="l00048"></a>00048         <span class="keywordflow">if</span>(dim&lt;0) {
+<a name="l00049"></a>00049                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(constructor) the dimension must be positive"</span>);
+<a name="l00050"></a>00050         }
+<a name="l00051"></a>00051         _delta_tempi=<span class="keyword">new</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a>[_dim];
+<a name="l00052"></a>00052 };
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
+<a name="l00056"></a><a class="code" href="classTimestruct.html#2a1f2c93819a069c71a2ade4f6fb2a32">00056</a> <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct::Timestruct</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;delta,<span class="keywordtype">int</span> dim): _dim((dim&gt;0)?dim:0){
+<a name="l00057"></a>00057         <span class="keywordflow">if</span>(dim&lt;0) {
+<a name="l00058"></a>00058                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(constructor) the dimension must be positive"</span>);
+<a name="l00059"></a>00059         }
+<a name="l00060"></a>00060         _delta_tempi=<span class="keyword">new</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a>[_dim];
+<a name="l00061"></a>00061         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;_dim;i++){
+<a name="l00062"></a>00062                 _delta_tempi[i]=delta;
+<a name="l00063"></a>00063         }
+<a name="l00064"></a>00064 };
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 
+<a name="l00068"></a><a class="code" href="classTimestruct.html#c9274864a0d7e3c9fdc1fef7f7c64af5">00068</a> <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct::Timestruct</a>(<a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> *delta_tempi,<span class="keywordtype">int</span> dim): _dim((dim&gt;0)?dim:0){
+<a name="l00069"></a>00069         <span class="keywordflow">if</span>(dim&lt;0) {
+<a name="l00070"></a>00070                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(constructor) the dimension must be positive"</span>);
+<a name="l00071"></a>00071         }
+<a name="l00072"></a>00072         <span class="keywordflow">if</span>(delta_tempi==NULL) {
+<a name="l00073"></a>00073                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(constructor) invalid deltatime pointer"</span>);
+<a name="l00074"></a>00074         }
+<a name="l00075"></a>00075         _delta_tempi=<span class="keyword">new</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a>[_dim];
+<a name="l00076"></a>00076         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;_dim;i++){
+<a name="l00077"></a>00077                 _delta_tempi[i]=delta_tempi[i];
+<a name="l00078"></a>00078         }
+<a name="l00079"></a>00079 };
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 
+<a name="l00083"></a><a class="code" href="classTimestruct.html#f1ea5a82405d88228f50513af2c940c1">00083</a> <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct::Timestruct</a>(<a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> **delta_tempi,<span class="keywordtype">int</span> dim): _dim((dim&gt;0)?dim:0){
+<a name="l00084"></a>00084         <span class="keywordflow">if</span>(dim&lt;0) {
+<a name="l00085"></a>00085                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(constructor) the dimension must be positive"</span>);
+<a name="l00086"></a>00086         }
+<a name="l00087"></a>00087         <span class="keywordflow">if</span>(delta_tempi==NULL) {
+<a name="l00088"></a>00088                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(constructor) invalid deltatime pointer"</span>);
+<a name="l00089"></a>00089         }
+<a name="l00090"></a>00090         _delta_tempi=<span class="keyword">new</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a>[_dim];
+<a name="l00091"></a>00091         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;_dim;i++){
+<a name="l00092"></a>00092                 _delta_tempi[i]=*delta_tempi[i];
+<a name="l00093"></a>00093         }
+<a name="l00094"></a>00094 };
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 
+<a name="l00098"></a><a class="code" href="classTimestruct.html#023350c8bfd37e5b13a8aaa17d55d262">00098</a> <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct::Timestruct</a>(<a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> *tempi,<span class="keywordtype">int</span> dim): _dim((dim&gt;0)?dim:0){
+<a name="l00099"></a>00099         <span class="keywordflow">if</span>(dim&lt;0) {
+<a name="l00100"></a>00100                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(constructor) the dimension must be positive"</span>);
+<a name="l00101"></a>00101         }
+<a name="l00102"></a>00102         <span class="keywordflow">if</span>(tempi==NULL) {
+<a name="l00103"></a>00103                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(constructor) invalid time pointer"</span>);
+<a name="l00104"></a>00104         }
+<a name="l00105"></a>00105         _delta_tempi=<span class="keyword">new</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a>[_dim];
+<a name="l00106"></a>00106         <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> today=*(<a class="code" href="classTime.html#c3f93f083ec4044299a6dc78d30c84a2" title="funzioine che crea il link statico all&amp;#39;oggetto today">Time::Get_today</a>());
+<a name="l00107"></a>00107         _delta_tempi[0]=(tempi[0]-today);
+<a name="l00108"></a>00108         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;_dim-1;i++){
+<a name="l00109"></a>00109                 _delta_tempi[i+1]=tempi[i+1]-tempi[i];
+<a name="l00110"></a>00110         }
+<a name="l00111"></a>00111 };
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 
+<a name="l00115"></a><a class="code" href="classTimestruct.html#e02162cd28ac92ec87be0fe5fb7a2dc3">00115</a> <a class="code" href="classTimestruct.html#fc23b3879ebadaa6fba2e2ae325c9103" title="costruttore di default">Timestruct::Timestruct</a>(<span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;copy){
+<a name="l00116"></a>00116         _dim=copy.<a class="code" href="classTimestruct.html#62fca8ac527ecf1c34542433f5e5ef1f">_dim</a>;
+<a name="l00117"></a>00117         _delta_tempi=<span class="keyword">new</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a>[_dim];
+<a name="l00118"></a>00118         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;_dim;i++){
+<a name="l00119"></a>00119                 _delta_tempi[i]=copy.<a class="code" href="classTimestruct.html#aac9a985dd6755654e6a57569749d4e4">_delta_tempi</a>[i];
+<a name="l00120"></a>00120         }
+<a name="l00121"></a>00121 };
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123 
+<a name="l00125"></a><a class="code" href="classTimestruct.html#81a023f27183c36ce785322a3e41bcda">00125</a> <a class="code" href="classTimestruct.html#81a023f27183c36ce785322a3e41bcda" title="distruttore">Timestruct::~Timestruct</a>(){
+<a name="l00126"></a>00126         <span class="keyword">delete</span>[] _delta_tempi;
+<a name="l00127"></a>00127 };
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 <span class="comment">//################################################################################################################</span>
+<a name="l00130"></a>00130 <span class="comment">//FUNZIONI GET</span>
+<a name="l00131"></a>00131 <span class="comment">//################################################################################################################</span>
+<a name="l00132"></a>00132 
+<a name="l00134"></a><a class="code" href="classTimestruct.html#514bd23d9d0e70b59237c925e8e5b562">00134</a> <span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;<a class="code" href="classTimestruct.html#514bd23d9d0e70b59237c925e8e5b562" title="funzione che restituisce l&amp;#39;i-esimo intervallo">Timestruct::Get_deltatime</a>(<span class="keywordtype">int</span> i) {
+<a name="l00135"></a>00135         <span class="keywordflow">if</span>(i&lt;_dim &amp;&amp; i&gt;=0) <span class="keywordflow">return</span> _delta_tempi[i];
+<a name="l00136"></a>00136         <span class="keywordflow">else</span> {
+<a name="l00137"></a>00137                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(Get_deltatime)  this deltatime doesn't exist"</span>);
+<a name="l00138"></a>00138                 <span class="keywordflow">if</span>(_dim!=0) <span class="keywordflow">return</span> _delta_tempi[0];
+<a name="l00139"></a>00139                 <span class="keywordflow">else</span>{
+<a name="l00140"></a>00140                         _dim=1;
+<a name="l00141"></a>00141                         _delta_tempi= <span class="keyword">new</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a>[1];
+<a name="l00142"></a>00142                         <span class="keywordflow">return</span> _delta_tempi[0];
+<a name="l00143"></a>00143                 }
+<a name="l00144"></a>00144         }
+<a name="l00145"></a>00145 };
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 
+<a name="l00149"></a><a class="code" href="classTimestruct.html#3ad4dbba9f3841fafb48f456cc2fb666">00149</a> <span class="keywordtype">int</span> <a class="code" href="classTimestruct.html#3ad4dbba9f3841fafb48f456cc2fb666" title="funzione che restituisce la dimensione del vettore">Timestruct::Get_dim</a>()<span class="keyword"> const</span>{
+<a name="l00150"></a>00150         <span class="keywordflow">return</span> _dim;
+<a name="l00151"></a>00151 };
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153 <span class="comment">//################################################################################################################</span>
+<a name="l00154"></a>00154 <span class="comment">//FUNZIONI SET</span>
+<a name="l00155"></a>00155 <span class="comment">//################################################################################################################</span>
+<a name="l00156"></a>00156 
+<a name="l00158"></a><a class="code" href="classTimestruct.html#8381e5c510225e7b43609e2fc633d02e">00158</a> <span class="keywordtype">void</span> <a class="code" href="classTimestruct.html#8381e5c510225e7b43609e2fc633d02e" title="funzione che imposta l&amp;#39;i-esimo intervallo">Timestruct::Set_deltatime</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;delta, <span class="keywordtype">int</span> i){
+<a name="l00159"></a>00159         <span class="keywordflow">if</span>(i&lt;_dim) _delta_tempi[i]=delta;
+<a name="l00160"></a>00160         <span class="keywordflow">else</span> {
+<a name="l00161"></a>00161                 <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>()-&gt;<a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">Add_error</a>(<span class="stringliteral">"Timestruct::(set_deltatime)  this deltatime doesn't exist"</span>);
+<a name="l00162"></a>00162         }
+<a name="l00163"></a>00163 };
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165 <span class="comment">//################################################################################################################</span>
+<a name="l00166"></a>00166 <span class="comment">//OPERATORE ASSEGNAMENTO</span>
+<a name="l00167"></a>00167 <span class="comment">//################################################################################################################</span>
+<a name="l00168"></a>00168 
+<a name="l00170"></a><a class="code" href="classTimestruct.html#bbddcfea306859ca5b4f6b3c19ee3dbf">00170</a> <span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;<a class="code" href="classTimestruct.html#bbddcfea306859ca5b4f6b3c19ee3dbf" title="overloading dell&amp;#39;operatore di assegnamento">Timestruct::operator=</a>(<span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;copy){
+<a name="l00171"></a>00171         <span class="keywordflow">if</span>(_dim!=copy.<a class="code" href="classTimestruct.html#62fca8ac527ecf1c34542433f5e5ef1f">_dim</a>){
+<a name="l00172"></a>00172                 <span class="keywordflow">if</span>(_dim!=0) <span class="keyword">delete</span>[] _delta_tempi;
+<a name="l00173"></a>00173                 _delta_tempi=<span class="keyword">new</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a>[copy.<a class="code" href="classTimestruct.html#62fca8ac527ecf1c34542433f5e5ef1f">_dim</a>];
+<a name="l00174"></a>00174                 _dim=copy.<a class="code" href="classTimestruct.html#62fca8ac527ecf1c34542433f5e5ef1f">_dim</a>;
+<a name="l00175"></a>00175         }
+<a name="l00176"></a>00176         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;_dim;i++){
+<a name="l00177"></a>00177                 _delta_tempi[i]=copy.<a class="code" href="classTimestruct.html#aac9a985dd6755654e6a57569749d4e4">_delta_tempi</a>[i];
+<a name="l00178"></a>00178         }
+<a name="l00179"></a>00179         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00180"></a>00180 };
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182 <span class="comment">//################################################################################################################</span>
+<a name="l00183"></a>00183 <span class="comment">//OPERATORI LOGICI</span>
+<a name="l00184"></a>00184 <span class="comment">//################################################################################################################</span>
+<a name="l00185"></a>00185 
+<a name="l00187"></a><a class="code" href="classTimestruct.html#abdcc71c06564c1d9be212eb081c702a">00187</a> <span class="keywordtype">bool</span> <a class="code" href="classTimestruct.html#abdcc71c06564c1d9be212eb081c702a" title="overloading dell&amp;#39;operatore logico di eguaglianza &amp;quot; == &amp;quot;">Timestruct::operator==</a>(<span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;dat)<span class="keyword"> const</span>{
+<a name="l00188"></a>00188         <span class="keywordflow">if</span>(_dim!=dat.<a class="code" href="classTimestruct.html#62fca8ac527ecf1c34542433f5e5ef1f">_dim</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00189"></a>00189         <span class="keywordflow">else</span> {
+<a name="l00190"></a>00190                 <span class="keywordtype">bool</span> check=<span class="keyword">true</span>;
+<a name="l00191"></a>00191                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;_dim;i++){
+<a name="l00192"></a>00192                         <span class="keywordflow">if</span>(_delta_tempi[i]!=dat.<a class="code" href="classTimestruct.html#aac9a985dd6755654e6a57569749d4e4">_delta_tempi</a>[i]){
+<a name="l00193"></a>00193                                 check=<span class="keyword">false</span>;
+<a name="l00194"></a>00194                         }
+<a name="l00195"></a>00195                 }
+<a name="l00196"></a>00196                 <span class="keywordflow">return</span> check;
+<a name="l00197"></a>00197         }
+<a name="l00198"></a>00198 };
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200 
+<a name="l00202"></a><a class="code" href="classTimestruct.html#84b74edb28f6e516de354ce1bc276e15">00202</a> <span class="keywordtype">bool</span> <a class="code" href="classTimestruct.html#84b74edb28f6e516de354ce1bc276e15" title="overloading dell&amp;#39;operatore logico di diseguaglianza &amp;quot; != &amp;quot;">Timestruct::operator!=</a>(<span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;dat)<span class="keyword"> const</span>{
+<a name="l00203"></a>00203         <span class="keywordflow">if</span>(_dim!=dat.<a class="code" href="classTimestruct.html#62fca8ac527ecf1c34542433f5e5ef1f">_dim</a>) <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00204"></a>00204         <span class="keywordflow">else</span> {
+<a name="l00205"></a>00205                 <span class="keywordtype">bool</span> check=<span class="keyword">false</span>;
+<a name="l00206"></a>00206                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;_dim;i++){
+<a name="l00207"></a>00207                         <span class="keywordflow">if</span>(_delta_tempi[i]!=dat.<a class="code" href="classTimestruct.html#aac9a985dd6755654e6a57569749d4e4">_delta_tempi</a>[i]){
+<a name="l00208"></a>00208                                 check=<span class="keyword">true</span>;
+<a name="l00209"></a>00209                         }
+<a name="l00210"></a>00210                 }
+<a name="l00211"></a>00211                 <span class="keywordflow">return</span> check;
+<a name="l00212"></a>00212         }
+<a name="l00213"></a>00213 };
+<a name="l00214"></a>00214 
+<a name="l00215"></a>00215 <span class="comment">//################################################################################################################</span>
+<a name="l00216"></a>00216 <span class="comment">//OVERLOADING DEL &lt;&lt;</span>
+<a name="l00217"></a>00217 <span class="comment">//################################################################################################################</span>
+<a name="l00218"></a>00218 
+<a name="l00219"></a>00219 <span class="comment">// overloading dell'operatore "&lt;&lt;"</span>
+<a name="l00220"></a>00220 std::ostream &amp;<a class="code" href="classTimestruct.html#7430391a1d823f6c0bba4236f8c30570" title="overloading dell&amp;#39;operatore &amp;quot;&amp;lt;&amp;lt;&amp;quot;">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> &amp;dat) {
+<a name="l00221"></a>00221         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;dat.<a class="code" href="classTimestruct.html#62fca8ac527ecf1c34542433f5e5ef1f">_dim</a>;i++){
+<a name="l00222"></a>00222                 os&lt;&lt;<span class="stringliteral">"#"</span>&lt;&lt;(i+1)&lt;&lt;<span class="stringliteral">"\t"</span>&lt;&lt;dat.<a class="code" href="classTimestruct.html#aac9a985dd6755654e6a57569749d4e4">_delta_tempi</a>[i]&lt;&lt;endl;
+<a name="l00223"></a>00223         }
+<a name="l00224"></a>00224         <span class="keywordflow">return</span> os;
+<a name="l00225"></a>00225 };
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227 <span class="comment">//################################################################################################################</span>
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229 
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:28 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

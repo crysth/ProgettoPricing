@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione: Riferimenti per la classe Option</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classi</span></a></li>
+      <li><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Elenco&nbsp;dei&nbsp;tipi&nbsp;composti</span></a></li>
+      <li><a href="hierarchy.html"><span>Gerarchia&nbsp;delle&nbsp;classi</span></a></li>
+      <li><a href="functions.html"><span>Membri&nbsp;dei&nbsp;composti</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Riferimenti per la classe Option</h1><!-- doxytag: class="Option" -->Classe che rappresenta il generico concetto di opzione.  
+<a href="#_details">Continua...</a>
+<p>
+<code>#include &lt;<a class="el" href="option_8hpp-source.html">option.hpp</a>&gt;</code>
+<p>
+<div class="dynheader">
+Diagramma delle classi per Option</div>
+<div class="dynsection">
+
+<p><center><img src="classOption.png" usemap="#Option_map" border="0" alt=""></center>
+<map name="Option_map">
+<area href="classEq__option.html" alt="Eq_option" shape="rect" coords="218,56,426,80">
+<area href="classEq__op__performance__with__corridor.html" alt="Eq_op_performance_with_corridor" shape="rect" coords="0,112,208,136">
+<area href="classEq__op__plainvanilla.html" alt="Eq_op_plainvanilla" shape="rect" coords="218,112,426,136">
+<area href="classEq__op__w.html" alt="Eq_op_w" shape="rect" coords="436,112,644,136">
+</map>
+</div>
+
+<p>
+<a href="classOption-members.html">Elenco di tutti i membri.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Membri pubblici</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="f517613005312013c576eb9099a50464"></a><!-- doxytag: member="Option::Option" ref="f517613005312013c576eb9099a50464" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOption.html#f517613005312013c576eb9099a50464">Option</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">costruttore di default <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="04b908a0ba9b1909ae378ca2a07fda61"></a><!-- doxytag: member="Option::~Option" ref="04b908a0ba9b1909ae378ca2a07fda61" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOption.html#04b908a0ba9b1909ae378ca2a07fda61">~Option</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">distruttore <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="254f8f706913e95217df2c3f919d41ae"></a><!-- doxytag: member="Option::operator=" ref="254f8f706913e95217df2c3f919d41ae" args="(Eq_option &amp;obj)" -->
+virtual <a class="el" href="classOption.html">Option</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOption.html#254f8f706913e95217df2c3f919d41ae">operator=</a> (<a class="el" href="classEq__option.html">Eq_option</a> &amp;obj)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">overloading dell'operatore di assegnamento per la classe figlia: <a class="el" href="classEq__option.html" title="Classe che rappresenta il concetto di opzione.">Eq_option</a>. <br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descrizione dettagliata</h2>
+Classe di livello 0. <br>
+ Classe astratta che rappresenta genericamente un’opzione. Ogni tipo di opzione verrá ovviamente derivata da questa, implementando la funzione virtual pura definente il payoff. <br>
+ L'unico metodo implementato è l'operatore di assegnamento per la classe figlia <a class="el" href="classEq__option.html" title="Classe che rappresenta il concetto di opzione.">Eq_option</a>, dichiarato virtual, necessario per permettere una maggiore elasticità del codice. 
+<p>Definizione alla linea <a class="el" href="option_8hpp-source.html#l00045">45</a> del file <a class="el" href="option_8hpp-source.html">option.hpp</a>.</p>
+<hr>La documentazione per questa classe è stata generata a partire dai seguenti file:<ul>
+<li><a class="el" href="option_8hpp-source.html">option.hpp</a><li><a class="el" href="option_8cpp-source.html">option.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:33 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

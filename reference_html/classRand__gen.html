@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione: Riferimenti per la classe Rand_gen</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classi</span></a></li>
+      <li><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Elenco&nbsp;dei&nbsp;tipi&nbsp;composti</span></a></li>
+      <li><a href="hierarchy.html"><span>Gerarchia&nbsp;delle&nbsp;classi</span></a></li>
+      <li><a href="functions.html"><span>Membri&nbsp;dei&nbsp;composti</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Riferimenti per la classe Rand_gen</h1><!-- doxytag: class="Rand_gen" -->Classe che rappresenta un generico generatore di numeri casuali.  
+<a href="#_details">Continua...</a>
+<p>
+<code>#include &lt;<a class="el" href="rand__gen_8hpp-source.html">rand_gen.hpp</a>&gt;</code>
+<p>
+<div class="dynheader">
+Diagramma delle classi per Rand_gen</div>
+<div class="dynsection">
+
+<p><center><img src="classRand__gen.png" usemap="#Rand_gen_map" border="0" alt=""></center>
+<map name="Rand_gen_map">
+<area href="classRand__gen__root.html" alt="Rand_gen_root" shape="rect" coords="0,56,98,80">
+</map>
+</div>
+
+<p>
+<a href="classRand__gen-members.html">Elenco di tutti i membri.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Membri pubblici</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b24271a30727c47308f8e8322e54f202"></a><!-- doxytag: member="Rand_gen::Rand_gen" ref="b24271a30727c47308f8e8322e54f202" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRand__gen.html#b24271a30727c47308f8e8322e54f202">Rand_gen</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">costruttore di default <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3535fe57099016ac506c435b746b6550"></a><!-- doxytag: member="Rand_gen::~Rand_gen" ref="3535fe57099016ac506c435b746b6550" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRand__gen.html#3535fe57099016ac506c435b746b6550">~Rand_gen</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">distruttore <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2f1e372b6b3bb67ca0663d6f1fa88263"></a><!-- doxytag: member="Rand_gen::Get_gauss" ref="2f1e372b6b3bb67ca0663d6f1fa88263" args="(double m, double var)=0" -->
+virtual <a class="el" href="classN__rand.html">N_rand</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRand__gen.html#2f1e372b6b3bb67ca0663d6f1fa88263">Get_gauss</a> (double m, double var)=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce un numero random estratto da una distribuzione gaussiana con media m e deviazione standard var <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="4809a5abac71d1daa9f70fc7bbde3ebf"></a><!-- doxytag: member="Rand_gen::Get_unif" ref="4809a5abac71d1daa9f70fc7bbde3ebf" args="(double in, double en)=0" -->
+virtual <a class="el" href="classN__rand.html">N_rand</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRand__gen.html#4809a5abac71d1daa9f70fc7bbde3ebf">Get_unif</a> (double in, double en)=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce un numero random estratto da una distribuzione uniforme sull'intervallo di estremi in , en <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5b8e409d9bdbdb93c25347d34666504"></a><!-- doxytag: member="Rand_gen::Get_binary" ref="a5b8e409d9bdbdb93c25347d34666504" args="()=0" -->
+virtual <a class="el" href="classN__rand.html">N_rand</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRand__gen.html#a5b8e409d9bdbdb93c25347d34666504">Get_binary</a> ()=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce un numero random estratto da una distribuzione binaria <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3712c7e1e6bb039b0356d04787474278"></a><!-- doxytag: member="Rand_gen::operator=" ref="3712c7e1e6bb039b0356d04787474278" args="(Rand_gen_root &amp;obj)" -->
+virtual <a class="el" href="classRand__gen.html">Rand_gen</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRand__gen.html#3712c7e1e6bb039b0356d04787474278">operator=</a> (<a class="el" href="classRand__gen__root.html">Rand_gen_root</a> &amp;obj)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">overloading dell'operatore di assegnamento per la classe figlia: <a class="el" href="classRand__gen__root.html" title="Generatore di numeri casuali basato sulla libreria ROOT (CERN).">Rand_gen_root</a> <br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descrizione dettagliata</h2>
+Classe di livello 1. <br>
+ E' la classe madre delle classi generatrici di numeri casuali. <br>
+ E' una classe puramente astratta; l'unico metodo implementato è l'overloading dell'operatore di assegnamento per la classe figlia <a class="el" href="classRand__gen__root.html" title="Generatore di numeri casuali basato sulla libreria ROOT (CERN).">Rand_gen_root</a>. <br>
+ Possiede 3 diversi metodi per la generazione di numeri casuali, dichiarati virtual puri perchè possano essere implementati nelle diverse classi figlie: <br>
+ Get_gauss restituisce un numero casuale estratto da una distribuzione gaussiana, <br>
+ Get_unif che permette di estrarlo da una distribuzione uniforme, <br>
+ Get_binary che permette di estrarlo da una distribuzione binaria. 
+<p>Definizione alla linea <a class="el" href="rand__gen_8hpp-source.html#l00051">51</a> del file <a class="el" href="rand__gen_8hpp-source.html">rand_gen.hpp</a>.</p>
+<hr>La documentazione per questa classe è stata generata a partire dai seguenti file:<ul>
+<li><a class="el" href="rand__gen_8hpp-source.html">rand_gen.hpp</a><li><a class="el" href="rand__gen_8cpp-source.html">rand_gen.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:34 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

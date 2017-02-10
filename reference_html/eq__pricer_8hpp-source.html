@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione:  File sorgente eq_pricer.hpp</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+<h1>eq_pricer.hpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//###################################################################################################</span>
+<a name="l00002"></a>00002 <span class="comment">//      </span>
+<a name="l00003"></a>00003 <span class="comment">//      FILE NAME :                     eq_pricer.hpp</span>
+<a name="l00004"></a>00004 <span class="comment">//      </span>
+<a name="l00005"></a>00005 <span class="comment">//      FILE TYPE :                     C++ file</span>
+<a name="l00006"></a>00006 <span class="comment">//      </span>
+<a name="l00007"></a>00007 <span class="comment">//      AUTHORS :                       Mariacristina Romano, Gianmaria Enea Roat</span>
+<a name="l00008"></a>00008 <span class="comment">//      </span>
+<a name="l00009"></a>00009 <span class="comment">//      DESCRIPTION :           Declaration of class Eq_pricer</span>
+<a name="l00010"></a>00010 <span class="comment">//      </span>
+<a name="l00011"></a>00011 <span class="comment">//      FIRST VERSION :         2010/feb/3</span>
+<a name="l00012"></a>00012 <span class="comment">//      </span>
+<a name="l00013"></a>00013 <span class="comment">//      LAST UPTIME :           2010/mar/9</span>
+<a name="l00014"></a>00014 <span class="comment">//      </span>
+<a name="l00015"></a>00015 <span class="comment">//      STATUS :                        final</span>
+<a name="l00016"></a>00016 <span class="comment">//      </span>
+<a name="l00017"></a>00017 <span class="comment">//      COPYRIGHT :                     none</span>
+<a name="l00018"></a>00018 <span class="comment">//      </span>
+<a name="l00019"></a>00019 <span class="comment">//      </span>
+<a name="l00020"></a>00020 <span class="comment">//      DETAILED DESCRIPTION :  E' una classe astratta, madre delle simulazioni dei prezzi di un'opzione. Il metodo Compute_price è dichiarato virtual puro. </span>
+<a name="l00021"></a>00021 <span class="comment">//                                      Consente di impostare e ottenere il prezzo e i puntatori all'opzione considerata e al processo utilizzato.</span>
+<a name="l00022"></a>00022 <span class="comment">//      </span>
+<a name="l00023"></a>00023 <span class="comment">//</span>
+<a name="l00024"></a>00024 <span class="comment">//</span>
+<a name="l00025"></a>00025 <span class="comment">//</span>
+<a name="l00026"></a>00026 <span class="comment">//      </span>
+<a name="l00027"></a>00027 <span class="comment">//      </span>
+<a name="l00028"></a>00028 <span class="comment">//      </span>
+<a name="l00029"></a>00029 <span class="comment">//      </span>
+<a name="l00030"></a>00030 <span class="comment">//      </span>
+<a name="l00031"></a>00031 <span class="comment">//#######################################################################################################</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#ifndef _EQ_PRICER_HPP</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span><span class="preprocessor">#define _EQ_PRICER_HPP</span>
+<a name="l00034"></a>00034 <span class="preprocessor"></span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include "option.hpp"</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include "price.hpp"</span>
+<a name="l00037"></a>00037 <span class="preprocessor">#include "eq_option.hpp"</span>
+<a name="l00038"></a>00038 <span class="preprocessor">#include "eq_process.hpp"</span>
+<a name="l00039"></a>00039 <span class="preprocessor">#include "process.hpp"</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="keyword">class </span><a class="code" href="classEq__pricer__montecarlo.html" title="Classe che rappresenta il metodo di montecarlo per il pricing di un&amp;#39;opzione.">Eq_pricer_montecarlo</a>;
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 <span class="keyword">using namespace </span>std;
+<a name="l00047"></a>00047 
+<a name="l00051"></a><a class="code" href="classEq__pricer.html">00051</a> <span class="keyword">class </span><a class="code" href="classEq__pricer.html" title="Classe che rappresenta un generico metodo di simulazione, per ottenere i prezzi di...">Eq_pricer</a> {
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         <span class="keyword">public</span>:
+<a name="l00054"></a>00054 <span class="comment">//              COSTRUTTORI~DISTRUTTORE</span>
+<a name="l00055"></a>00055                 <a class="code" href="classEq__pricer.html#0daa09b6154003b55c39a35089935ff4" title="costruttore di default">Eq_pricer</a>();
+<a name="l00056"></a>00056                 <a class="code" href="classEq__pricer.html#8cf298432be08cd0469b885ee0aaf41b" title="distruttore">~Eq_pricer</a>();
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="comment">//              FUNZIONI VIRTUAL</span>
+<a name="l00060"></a>00060 <span class="comment"></span>                <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classEq__pricer.html#a79c104c56b9039983795fc290f57b15" title="funzione che valuta il prezzo dell&amp;#39;opzione ( virtual pura)">Compute_price</a>()=0;
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 <span class="comment">//              FUNZIONI GET</span>
+<a name="l00063"></a>00063                 <a class="code" href="classPrice.html" title="Classe che rappresenta il prezzo.">Price</a> <a class="code" href="classEq__pricer.html#ff7a1058b6b004282b620011263f2d42" title="funzione che restituisce il prezzo">Get_price</a>() <span class="keyword">const</span>;
+<a name="l00064"></a>00064                 <a class="code" href="classEq__option.html" title="Classe che rappresenta il concetto di opzione.">Eq_option</a> *<a class="code" href="classEq__pricer.html#860982178b916388d0878d0b766b07e0" title="funzione che restituisce l&amp;#39;opzione di riferimento">Get_Eq_option</a>() <span class="keyword">const</span>;
+<a name="l00065"></a>00065                 <a class="code" href="classProcess.html" title="Classe che rappresenta un generico processo.">Process</a> *<a class="code" href="classEq__pricer.html#e32ef73dd340a1436d1f427b8838a038" title="funzione che restituisce il processo utilizzato">Get_process</a>() <span class="keyword">const</span>;
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="comment">//              FUNZIONI SET</span>
+<a name="l00068"></a>00068                 <span class="keywordtype">void</span> <a class="code" href="classEq__pricer.html#3d453fdbb742daab2f16d4f42bc21255" title="funzione che imposta l&amp;#39;opzione di riferimento">Set_Eq_option</a>(<a class="code" href="classEq__option.html" title="Classe che rappresenta il concetto di opzione.">Eq_option</a> *eq_option);
+<a name="l00069"></a>00069                 <span class="keywordtype">void</span> <a class="code" href="classEq__pricer.html#c389f4b0f899d36b1ae834b6a06c12d2" title="funzione che imposta il prezzo">Set_price</a>(<span class="keyword">const</span> <a class="code" href="classPrice.html" title="Classe che rappresenta il prezzo.">Price</a> &amp;price);
+<a name="l00070"></a>00070                 <span class="keywordtype">void</span> <a class="code" href="classEq__pricer.html#a93b59194ebc4f57319b0c77e138f846" title="funzionie che imposta il processo da utilizzare">Set_process</a>(<a class="code" href="classProcess.html" title="Classe che rappresenta un generico processo.">Process</a>* process);
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="comment">//              OPERATORE ASSEGNAMENTO</span>
+<a name="l00073"></a>00073                 <span class="keyword">virtual</span> <a class="code" href="classEq__pricer.html" title="Classe che rappresenta un generico metodo di simulazione, per ottenere i prezzi di...">Eq_pricer</a> &amp;<a class="code" href="classEq__pricer.html#a430ac9ea7d3952d0b94748377579a04" title="overloading dell&amp;#39;operatore di assegnamento per la classe figlia: Eq_pricer_montecarlo...">operator=</a>(<a class="code" href="classEq__pricer__montecarlo.html" title="Classe che rappresenta il metodo di montecarlo per il pricing di un&amp;#39;opzione.">Eq_pricer_montecarlo</a> &amp;obj);
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076         <span class="keyword">private</span>:
+<a name="l00077"></a>00077                 <a class="code" href="classEq__option.html" title="Classe che rappresenta il concetto di opzione.">Eq_option</a> *_eq_option;
+<a name="l00078"></a>00078                 <a class="code" href="classProcess.html" title="Classe che rappresenta un generico processo.">Process</a> *_process;
+<a name="l00079"></a>00079                 <a class="code" href="classPrice.html" title="Classe che rappresenta il prezzo.">Price</a> _price;
+<a name="l00080"></a>00080 };
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:27 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

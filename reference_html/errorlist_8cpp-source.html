@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione:  File sorgente errorlist.cpp</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+<h1>errorlist.cpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//###################################################################################################</span>
+<a name="l00002"></a>00002 <span class="comment">//      </span>
+<a name="l00003"></a>00003 <span class="comment">//      FILE NAME :                     Errorlist.cpp</span>
+<a name="l00004"></a>00004 <span class="comment">//      </span>
+<a name="l00005"></a>00005 <span class="comment">//      FILE TYPE :                     C++ file</span>
+<a name="l00006"></a>00006 <span class="comment">//      </span>
+<a name="l00007"></a>00007 <span class="comment">//      AUTHORS :                       Mariacristina Romano, Gianmaria Enea Roat</span>
+<a name="l00008"></a>00008 <span class="comment">//      </span>
+<a name="l00009"></a>00009 <span class="comment">//      DESCRIPTION :           Implementation of class Errorlist</span>
+<a name="l00010"></a>00010 <span class="comment">//      </span>
+<a name="l00011"></a>00011 <span class="comment">//      FIRST VERSION :         2010/feb/10</span>
+<a name="l00012"></a>00012 <span class="comment">//      </span>
+<a name="l00013"></a>00013 <span class="comment">//      LAST UPTIME :           2010/mar/15</span>
+<a name="l00014"></a>00014 <span class="comment">//      </span>
+<a name="l00015"></a>00015 <span class="comment">//      STATUS :                        final</span>
+<a name="l00016"></a>00016 <span class="comment">//      </span>
+<a name="l00017"></a>00017 <span class="comment">//      COPYRIGHT :                     none</span>
+<a name="l00018"></a>00018 <span class="comment">//      </span>
+<a name="l00019"></a>00019 <span class="comment">//      </span>
+<a name="l00020"></a>00020 <span class="comment">//      DETAILED DESCRIPTION :  Classe che rappresenta la coda di stampa degli errori di scorretto utilizzo della libreria.</span>
+<a name="l00021"></a>00021 <span class="comment">//                                      Ogni volta che la libreria viene utilizzata erroneamente, viene inviato un messaggio di errore alla classe Errorlist</span>
+<a name="l00022"></a>00022 <span class="comment">//                                      che stamperá sul file lista_errori.dat l’elenco degli errori. Essendo un singleton, il costruttore é privato. </span>
+<a name="l00023"></a>00023 <span class="comment">//                                      Si evita in tal modo che venga costruito piú di un oggetto di tipo Errorlist, che sarebbe evidentemente un inutile spreco di memoria,</span>
+<a name="l00024"></a>00024 <span class="comment">//                                       e tutti i messaggi di errori vengono quindi gestiti da un unico oggetto.</span>
+<a name="l00025"></a>00025 <span class="comment">//      </span>
+<a name="l00026"></a>00026 <span class="comment">//      </span>
+<a name="l00027"></a>00027 <span class="comment">//      </span>
+<a name="l00028"></a>00028 <span class="comment">//      </span>
+<a name="l00029"></a>00029 <span class="comment">//#######################################################################################################</span>
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 <span class="preprocessor">#include "errorlist.hpp"</span>
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="comment">//####################################################################################################################</span>
+<a name="l00034"></a>00034 <span class="comment">//COSTRUTTORE</span>
+<a name="l00035"></a>00035 <span class="comment">//####################################################################################################################</span>
+<a name="l00036"></a>00036 
+<a name="l00038"></a><a class="code" href="classErrorList.html#d0e8f8a2f93955600233b18176ce056f">00038</a> <a class="code" href="classErrorList.html#d0e8f8a2f93955600233b18176ce056f" title="costruttore: è un membro privato che crea il file lista_errori.dat">ErrorList::ErrorList</a>(){
+<a name="l00039"></a>00039         _stampa.open(<span class="stringliteral">"lista_errori.dat"</span>,ios::out);
+<a name="l00040"></a>00040         _stampa&lt;&lt;<span class="stringliteral">"\t\t==&gt;ERRORI&lt;=="</span>&lt;&lt;endl&lt;&lt;endl;
+<a name="l00041"></a>00041 };
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="comment">//####################################################################################################################</span>
+<a name="l00044"></a>00044 <span class="comment">//DISTRUTTORE</span>
+<a name="l00045"></a>00045 <span class="comment">//####################################################################################################################</span>
+<a name="l00046"></a>00046 
+<a name="l00048"></a><a class="code" href="classErrorList.html#11192fc0129ce5f00904ee2eb7a62790">00048</a> <a class="code" href="classErrorList.html#11192fc0129ce5f00904ee2eb7a62790" title="distruttore">ErrorList::~ErrorList</a>(){
+<a name="l00049"></a>00049         _stampa.close();
+<a name="l00050"></a>00050 };
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 <span class="comment">//####################################################################################################################</span>
+<a name="l00053"></a>00053 <span class="comment">//METODO GET</span>
+<a name="l00054"></a>00054 <span class="comment">//####################################################################################################################</span>
+<a name="l00055"></a>00055 
+<a name="l00057"></a><a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2">00057</a> <a class="code" href="classErrorList.html" title="Classe che rappresenta la coda di stampa degli errori.">ErrorList</a>* <a class="code" href="classErrorList.html#a1e0bae7f5e739abfebbc8c1513783e2" title="funzione che chiama il costruttore">ErrorList::Get_errorlist</a>() {
+<a name="l00058"></a>00058         <span class="keywordflow">if</span>(_list==NULL){
+<a name="l00059"></a>00059                 _list = <span class="keyword">new</span> <a class="code" href="classErrorList.html" title="Classe che rappresenta la coda di stampa degli errori.">ErrorList</a>;
+<a name="l00060"></a>00060         }
+<a name="l00061"></a>00061         <span class="keywordflow">return</span> _list;
+<a name="l00062"></a>00062 };
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 <span class="comment">//####################################################################################################################</span>
+<a name="l00065"></a>00065 <span class="comment">//METODO ADD</span>
+<a name="l00066"></a>00066 <span class="comment">//####################################################################################################################</span>
+<a name="l00067"></a>00067 
+<a name="l00069"></a><a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a">00069</a> <span class="keywordtype">void</span> <a class="code" href="classErrorList.html#ae61ca67f3f91063faa122307ba4d05a" title="funzione che consente l&amp;#39;aggiunta di un errore al file">ErrorList::Add_error</a>(<span class="keywordtype">string</span> errore){
+<a name="l00070"></a>00070         _stampa&lt;&lt;errore&lt;&lt;endl&lt;&lt;endl;    
+<a name="l00071"></a>00071 };
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 <span class="comment">//####################################################################################################################</span>
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:27 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

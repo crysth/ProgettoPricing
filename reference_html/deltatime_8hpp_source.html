@@ -1,0 +1,159 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Progetto per il pricing di un&#39;opzione:  File sorgente deltatime.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generato da Doxygen 1.6.1 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Cerca" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Elenco&nbsp;dei&nbsp;file</span></a></li>
+    </ul>
+  </div>
+<h1>deltatime.hpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//###################################################################################################</span>
+<a name="l00002"></a>00002 <span class="comment">//      </span>
+<a name="l00003"></a>00003 <span class="comment">//      FILE NAME :                     deltatime.hpp</span>
+<a name="l00004"></a>00004 <span class="comment">//      </span>
+<a name="l00005"></a>00005 <span class="comment">//      FILE TYPE :                     C++ file</span>
+<a name="l00006"></a>00006 <span class="comment">//      </span>
+<a name="l00007"></a>00007 <span class="comment">//      AUTHORS :                       Mariacristina Romano, Gianmaria Enea Roat</span>
+<a name="l00008"></a>00008 <span class="comment">//      </span>
+<a name="l00009"></a>00009 <span class="comment">//      DESCRIPTION :           Declaration of class Deltatime</span>
+<a name="l00010"></a>00010 <span class="comment">//      </span>
+<a name="l00011"></a>00011 <span class="comment">//      FIRST VERSION :         2010/feb/3</span>
+<a name="l00012"></a>00012 <span class="comment">//      </span>
+<a name="l00013"></a>00013 <span class="comment">//      LAST UPTIME :           2010/apr/22</span>
+<a name="l00014"></a>00014 <span class="comment">//      </span>
+<a name="l00015"></a>00015 <span class="comment">//      STATUS :                        final</span>
+<a name="l00016"></a>00016 <span class="comment">//      </span>
+<a name="l00017"></a>00017 <span class="comment">//      COPYRIGHT :                     none</span>
+<a name="l00018"></a>00018 <span class="comment">//      </span>
+<a name="l00019"></a>00019 <span class="comment">//      </span>
+<a name="l00020"></a>00020 <span class="comment">//      DETAILED DESCRIPTION :  Classe che rappresenta un intervallo temporale espresso in anni, mesi giorni, ore, minuti e secondi. </span>
+<a name="l00021"></a>00021 <span class="comment">//                                      Importante la ridefinizione degli operatori che permette di trattare un intervallo temporale come frazione di anni espressa da un double. </span>
+<a name="l00022"></a>00022 <span class="comment">//                                      Abbiamo ritenuto opportuno ridefinire in modo differente la divisione per un numero reale(double) e per un numero intero.</span>
+<a name="l00023"></a>00023 <span class="comment">//                                      Mentre è più comodo trattare la prima come un double che rappresenti la frazione di anni, nel secondo caso abbiamo scelto di</span>
+<a name="l00024"></a>00024 <span class="comment">//                                      mantenere un oggetto Deltatime.</span>
+<a name="l00025"></a>00025 <span class="comment">//                                              </span>
+<a name="l00026"></a>00026 <span class="comment">//      </span>
+<a name="l00027"></a>00027 <span class="comment">//      </span>
+<a name="l00028"></a>00028 <span class="comment">//      </span>
+<a name="l00029"></a>00029 <span class="comment">//      </span>
+<a name="l00030"></a>00030 <span class="comment">//      </span>
+<a name="l00031"></a>00031 <span class="comment">//###################################################################################################</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#ifndef _DELTATIME_HPP</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span><span class="preprocessor">#define _DELTATIME_HPP</span>
+<a name="l00034"></a>00034 <span class="preprocessor"></span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="keyword">using namespace </span>std;
+<a name="l00040"></a>00040 
+<a name="l00043"></a><a class="code" href="classDeltatime.html">00043</a> <span class="keyword">class </span><a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> {
+<a name="l00044"></a>00044         <span class="keyword">public</span>:
+<a name="l00045"></a>00045                 <a class="code" href="classDeltatime.html#a7a0eb8f2a29a7cbd3e90e1140ea377ec" title="costruttore di default">Deltatime</a>();
+<a name="l00046"></a>00046                 <a class="code" href="classDeltatime.html#a7a0eb8f2a29a7cbd3e90e1140ea377ec" title="costruttore di default">Deltatime</a>(<span class="keywordtype">int</span> y,<span class="keywordtype">int</span> M,<span class="keywordtype">int</span> d,<span class="keywordtype">int</span> h, <span class="keywordtype">int</span> m, <span class="keywordtype">int</span> s);
+<a name="l00047"></a>00047                 <a class="code" href="classDeltatime.html#a7a0eb8f2a29a7cbd3e90e1140ea377ec" title="costruttore di default">Deltatime</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;copy);
+<a name="l00048"></a>00048                 <a class="code" href="classDeltatime.html#a5d11c5199acf76530abf2ec7f11ac63c" title="distruttore">~Deltatime</a>();
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 <span class="comment">//              FUNZIONI GET</span>
+<a name="l00051"></a>00051                 <span class="keywordtype">int</span> <a class="code" href="classDeltatime.html#ac28b4e9dc8c29b47966192588eb0116f" title="funzione che restituisce l&amp;#39;anno">Get_y</a>()<span class="keyword">const</span>;
+<a name="l00052"></a>00052                 <span class="keywordtype">int</span> <a class="code" href="classDeltatime.html#ad8818d7f6af2e3c7d55716dc95a78043" title="funzione che restituisce il mese">Get_M</a>()<span class="keyword">const</span>;
+<a name="l00053"></a>00053                 <span class="keywordtype">int</span> <a class="code" href="classDeltatime.html#ada85e6428a37acc5fa424553aaf28e35" title="funzione che restituisce il giorno">Get_d</a>()<span class="keyword">const</span>;
+<a name="l00054"></a>00054                 <span class="keywordtype">int</span> <a class="code" href="classDeltatime.html#af22968a1a82bd25e8a2676205bf7806d" title="funzione che restituisce il ora">Get_h</a>()<span class="keyword">const</span>;
+<a name="l00055"></a>00055                 <span class="keywordtype">int</span> <a class="code" href="classDeltatime.html#abab6a7564adffdf885c6e16bf321d63a" title="funzione che restituisce il minuto">Get_m</a>()<span class="keyword">const</span>;
+<a name="l00056"></a>00056                 <span class="keywordtype">int</span> <a class="code" href="classDeltatime.html#adfa70b36b347fd4467621ebf7135dfbe" title="funzione che restituisce il secondo">Get_s</a>()<span class="keyword">const</span>;
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="comment">//              FUNZIONI SET</span>
+<a name="l00059"></a>00059                 <span class="keywordtype">void</span> <a class="code" href="classDeltatime.html#a9b65bb9e8b083206a7a4ba02d2e91243" title="funzione che imposta l&amp;#39; anno">Set_y</a>(<span class="keywordtype">int</span> YYYY);
+<a name="l00060"></a>00060                 <span class="keywordtype">void</span> <a class="code" href="classDeltatime.html#a68c14d081815cdda502dd64268a6220b" title="funzone che imposta il mese">Set_M</a>(<span class="keywordtype">int</span> M);
+<a name="l00061"></a>00061                 <span class="keywordtype">void</span> <a class="code" href="classDeltatime.html#a7532d952d97c88713c90cf315c52808b" title="funzone che imposta il giorno">Set_d</a>(<span class="keywordtype">int</span> D);
+<a name="l00062"></a>00062                 <span class="keywordtype">void</span> <a class="code" href="classDeltatime.html#afb0c14fb88b7c47269b905f65880aa5b" title="funzone che imposta l&amp;#39;ora">Set_h</a>(<span class="keywordtype">int</span> h);
+<a name="l00063"></a>00063                 <span class="keywordtype">void</span> <a class="code" href="classDeltatime.html#aceb7352f5d895721d968586baf35fc72" title="funzone che imposta i minuti">Set_m</a>(<span class="keywordtype">int</span> m);
+<a name="l00064"></a>00064                 <span class="keywordtype">void</span> <a class="code" href="classDeltatime.html#ae05855245881236df3fec95044aefbb9" title="funzone che imposta i secondi">Set_s</a>(<span class="keywordtype">int</span> s);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 <span class="comment">//              METODI</span>
+<a name="l00067"></a>00067                 <span class="keywordtype">double</span> <a class="code" href="classDeltatime.html#ae73c874b672dae80612ce1e239f56795" title="valutazione del deltatime in frazione di anni">Value</a>()<span class="keyword">const</span>;
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 <span class="comment">//              OPERATORI MATEMATICI</span>
+<a name="l00070"></a>00070                 <span class="keywordtype">double</span> <a class="code" href="classDeltatime.html#a229e75c9c877c77c9edfca9e0a69261c" title="overloading dell&amp;#39;operatore di moltiplicazione: valuta l&amp;#39;oggetto in frazione...">operator*</a>(<span class="keywordtype">double</span> c) <span class="keyword">const</span>;
+<a name="l00072"></a>00072                 <span class="keyword">friend</span> <span class="keywordtype">double</span> <a class="code" href="classDeltatime.html#a229e75c9c877c77c9edfca9e0a69261c" title="overloading dell&amp;#39;operatore di moltiplicazione: valuta l&amp;#39;oggetto in frazione...">operator*</a>(<span class="keywordtype">double</span> c, <span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;del);
+<a name="l00073"></a>00073                 <span class="keywordtype">double</span> <a class="code" href="classDeltatime.html#a8ca28563814b5f6875b960561d2b6b0a" title="overloading dell&amp;#39;operatore di divisione: valuta l&amp;#39;oggetto in frazione di...">operator/</a>(<span class="keywordtype">double</span> c) <span class="keyword">const</span>;
+<a name="l00075"></a>00075                 <span class="keyword">friend</span> <span class="keywordtype">double</span> <a class="code" href="classDeltatime.html#a8ca28563814b5f6875b960561d2b6b0a" title="overloading dell&amp;#39;operatore di divisione: valuta l&amp;#39;oggetto in frazione di...">operator/</a>(<span class="keywordtype">double</span> c, <span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;del);
+<a name="l00076"></a>00076                 <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> <a class="code" href="classDeltatime.html#a8ca28563814b5f6875b960561d2b6b0a" title="overloading dell&amp;#39;operatore di divisione: valuta l&amp;#39;oggetto in frazione di...">operator/</a>(<span class="keywordtype">int</span> c);
+<a name="l00077"></a>00077                 <span class="keywordtype">double</span> <a class="code" href="classDeltatime.html#a380ce06699a290ea5902618b6b7ed4e1" title="overloading dell&amp;#39;operatore di sottrazione: valuta l&amp;#39;oggetto in frazione di...">operator-</a>(<span class="keywordtype">double</span> c) <span class="keyword">const</span>;
+<a name="l00079"></a>00079                 <span class="keyword">friend</span> <span class="keywordtype">double</span> <a class="code" href="classDeltatime.html#a380ce06699a290ea5902618b6b7ed4e1" title="overloading dell&amp;#39;operatore di sottrazione: valuta l&amp;#39;oggetto in frazione di...">operator-</a>(<span class="keywordtype">double</span> c, <span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;del);
+<a name="l00080"></a>00080                 <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> <a class="code" href="classDeltatime.html#a380ce06699a290ea5902618b6b7ed4e1" title="overloading dell&amp;#39;operatore di sottrazione: valuta l&amp;#39;oggetto in frazione di...">operator-</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;c) <span class="keyword">const</span>;
+<a name="l00081"></a>00081                 <span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;<a class="code" href="classDeltatime.html#a04bb6369be5b5f0348172f8125851fed" title="overloading dell&amp;#39;operatore di incremento">operator+=</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;d);
+<a name="l00082"></a>00082                 <span class="keywordtype">double</span> <a class="code" href="classDeltatime.html#a8ca28563814b5f6875b960561d2b6b0a" title="overloading dell&amp;#39;operatore di divisione: valuta l&amp;#39;oggetto in frazione di...">operator/</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;c) <span class="keyword">const</span>;
+<a name="l00083"></a>00083                 <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> <a class="code" href="classDeltatime.html#ab2c9c4d8ea692d627d8c5ebe59847bb0" title="overloading dell&amp;#39;operatore di somma">operator+</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;c) <span class="keyword">const</span>;
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085 <span class="comment">//              OPERATORI LOGICI</span>
+<a name="l00086"></a>00086                 <span class="keywordtype">bool</span> <a class="code" href="classDeltatime.html#a93d76b42d0be0a76b776cd736a707769" title="overloading dell&amp;#39;operatore logico &amp;quot;minore o uguale&amp;quot;">operator&lt;=</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;d) <span class="keyword">const</span>;
+<a name="l00087"></a>00087                 <span class="keywordtype">bool</span> <a class="code" href="classDeltatime.html#ab15c3c11ce5cd312c0aea1d0146ba234" title="overloading dell&amp;#39;operatore logico &amp;quot;maggiore o uguale&amp;quot;">operator&gt;=</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;d) <span class="keyword">const</span>;
+<a name="l00088"></a>00088                 <span class="keywordtype">bool</span> <a class="code" href="classDeltatime.html#ad0021496d09a2815f5a3635944cdae0b" title="overloading dell&amp;#39;operatore logico &amp;quot;minore&amp;quot;">operator&lt;</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;d) <span class="keyword">const</span>;
+<a name="l00089"></a>00089                 <span class="keywordtype">bool</span> <a class="code" href="classDeltatime.html#a1e714cf025ff22de50f86b6148d87782" title="overloading dell&amp;#39;operatore logico &amp;quot;maggiore&amp;quot;">operator&gt;</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;d) <span class="keyword">const</span>;
+<a name="l00090"></a>00090                 <span class="keywordtype">bool</span> <a class="code" href="classDeltatime.html#a87b77fe1afbcaee67f94aa327ed4b5c1" title="overloading dell&amp;#39;operatore logico di uguaglianza">operator==</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;d) <span class="keyword">const</span>;
+<a name="l00091"></a>00091                 <span class="keywordtype">bool</span> <a class="code" href="classDeltatime.html#a3dfd0f9868d991faf82c12c5a4af09f3" title="overloading dell&amp;#39;operatore logico di disuguaglianza">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;d) <span class="keyword">const</span>;
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 <span class="comment">//              OPERATORE ASSEGNAMENTO</span>
+<a name="l00094"></a>00094                 <span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;<a class="code" href="classDeltatime.html#aba301e0003411e4f3a6bf2d826b92a18" title="overloading dell&amp;#39;operatore di assegnamento">operator=</a>(<span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;copy);
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="comment">//              OVERLOADING DEL &lt;&lt;</span>
+<a name="l00098"></a>00098 <span class="comment"></span>                <span class="keyword">friend</span> ostream &amp;<a class="code" href="classDeltatime.html#a30d9365d174cbc5a6d974ff6fb14b4e8" title="overloading dell&amp;#39;operatore &amp;quot;&amp;lt;&amp;lt;&amp;quot;">operator&lt;&lt;</a>(ostream &amp;os, <span class="keyword">const</span> <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> &amp;d);
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100         <span class="keyword">private</span>:
+<a name="l00101"></a>00101                 <span class="keywordtype">int</span> _y,_M,_d,_h,_m,_s;
+<a name="l00102"></a>00102 };
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Friend</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr size="1"/><address style="text-align: right;"><small>Generato il Wed May 5 15:16:33 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

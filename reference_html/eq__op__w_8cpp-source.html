@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione:  File sorgente eq_op_w.cpp</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+<h1>eq_op_w.cpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//###################################################################################################</span>
+<a name="l00002"></a>00002 <span class="comment">//      </span>
+<a name="l00003"></a>00003 <span class="comment">//      FILE NAME :                     eq_op_w.cpp</span>
+<a name="l00004"></a>00004 <span class="comment">//      </span>
+<a name="l00005"></a>00005 <span class="comment">//      FILE TYPE :                     C++ file</span>
+<a name="l00006"></a>00006 <span class="comment">//      </span>
+<a name="l00007"></a>00007 <span class="comment">//      AUTHORS :                       Mariacristina Romano, Gianmaria Enea Roat, Marco Antonelli (poco)</span>
+<a name="l00008"></a>00008 <span class="comment">//      </span>
+<a name="l00009"></a>00009 <span class="comment">//      DESCRIPTION :           Implementation of class Eq_op_w</span>
+<a name="l00010"></a>00010 <span class="comment">//      </span>
+<a name="l00011"></a>00011 <span class="comment">//      FIRST VERSION :         2010/feb/3</span>
+<a name="l00012"></a>00012 <span class="comment">//      </span>
+<a name="l00013"></a>00013 <span class="comment">//      LAST UPTIME :           2010/mar/26</span>
+<a name="l00014"></a>00014 <span class="comment">//      </span>
+<a name="l00015"></a>00015 <span class="comment">//      STATUS :                        final</span>
+<a name="l00016"></a>00016 <span class="comment">//      </span>
+<a name="l00017"></a>00017 <span class="comment">//      COPYRIGHT :                     none</span>
+<a name="l00018"></a>00018 <span class="comment">//      </span>
+<a name="l00019"></a>00019 <span class="comment">//      </span>
+<a name="l00020"></a>00020 <span class="comment">//      DETAILED DESCRIPTION :  Rappresenta un'opzione che usiamo per testare la nostra libreria in quanto ne conosciamo a priori il risultato, </span>
+<a name="l00021"></a>00021 <span class="comment">//                                      inoltre è anche un test per la classe che genera numeri casuali in quanto il Pay-off è definito come la sommatoria </span>
+<a name="l00022"></a>00022 <span class="comment">//                                      dei quadrati delle variabili casuali estratte durante il cammino passato alla funzione Pay_off.</span>
+<a name="l00023"></a>00023 <span class="comment">//      </span>
+<a name="l00024"></a>00024 <span class="comment">//</span>
+<a name="l00025"></a>00025 <span class="comment">//</span>
+<a name="l00026"></a>00026 <span class="comment">//      </span>
+<a name="l00027"></a>00027 <span class="comment">//      </span>
+<a name="l00028"></a>00028 <span class="comment">//      </span>
+<a name="l00029"></a>00029 <span class="comment">//      </span>
+<a name="l00030"></a>00030 <span class="comment">//      </span>
+<a name="l00031"></a>00031 <span class="comment">//#######################################################################################################</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include "eq_op_w.hpp"</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include "errorlist.hpp"</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="comment">//#######################################################################################################</span>
+<a name="l00036"></a>00036 <span class="comment">//COSTRUTTORI~DISTRUTTORE</span>
+<a name="l00037"></a>00037 <span class="comment">//#######################################################################################################</span>
+<a name="l00038"></a>00038 
+<a name="l00040"></a><a class="code" href="classEq__op__w.html#1ce75f750362dee83f2a6cd3b5f0e4f6">00040</a> <a class="code" href="classEq__op__w.html#1ce75f750362dee83f2a6cd3b5f0e4f6" title="costruttore di default">Eq_op_w::Eq_op_w</a>() {};
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 
+<a name="l00044"></a><a class="code" href="classEq__op__w.html#4744b12ef8453587fca15576b12eab87">00044</a> <a class="code" href="classEq__op__w.html#1ce75f750362dee83f2a6cd3b5f0e4f6" title="costruttore di default">Eq_op_w::Eq_op_w</a>(<a class="code" href="classEq__price.html" title="Classe che rappresenta il prezzo di un&amp;#39;azione in un istante fissato.">Eq_price</a> eq_price, <a class="code" href="classTimestruct.html" title="Classe che rappresenta un vettore di intervalli temporali.">Timestruct</a> times){
+<a name="l00045"></a>00045         <a class="code" href="classEq__option.html#b94c48461e690d4c6c6435863ab57768" title="funzione che imposta il punto iniziale dell&amp;#39;azione">Set_Eq_price</a>(eq_price);
+<a name="l00046"></a>00046         <a class="code" href="classEq__option.html#7f0b38366d727197e42111768af94b51" title="funzione che imposta il vettore di tempi">Set_times</a>(times);
+<a name="l00047"></a>00047 };
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 
+<a name="l00051"></a><a class="code" href="classEq__op__w.html#6ab1c53a235a18b340c47a46753b02a9">00051</a> <a class="code" href="classEq__op__w.html#1ce75f750362dee83f2a6cd3b5f0e4f6" title="costruttore di default">Eq_op_w::Eq_op_w</a>(<span class="keyword">const</span> <a class="code" href="classEq__op__w.html" title="Classe che rappresenta un&amp;#39;opzione utilizzata per il controllo della libreria...">Eq_op_w</a> &amp;copy){
+<a name="l00052"></a>00052         <a class="code" href="classEq__option.html#b94c48461e690d4c6c6435863ab57768" title="funzione che imposta il punto iniziale dell&amp;#39;azione">Set_Eq_price</a>(copy.<a class="code" href="classEq__option.html#77d9212336913cc0ff05e06e1720745f" title="funzione che restituisce il punto iniziale dell&amp;#39;azione">Get_Eq_price</a>());
+<a name="l00053"></a>00053         <a class="code" href="classEq__option.html#7f0b38366d727197e42111768af94b51" title="funzione che imposta il vettore di tempi">Set_times</a>(copy.<a class="code" href="classEq__option.html#4798367e9196704e94fff0299caa0aa6" title="funzione che restituisce il vettore di tempi">Get_times</a>());
+<a name="l00054"></a>00054 };
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
+<a name="l00058"></a><a class="code" href="classEq__op__w.html#7e70ceb2b437c7b514f732313c683f5b">00058</a> <a class="code" href="classEq__op__w.html#7e70ceb2b437c7b514f732313c683f5b" title="distruttore">Eq_op_w::~Eq_op_w</a>(){};
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 <span class="comment">//#######################################################################################################</span>
+<a name="l00061"></a>00061 <span class="comment">//PAYOFF</span>
+<a name="l00062"></a>00062 <span class="comment">//#######################################################################################################</span>
+<a name="l00063"></a>00063 
+<a name="l00065"></a><a class="code" href="classEq__op__w.html#4d22b811710ac5adab244e2746c4d3e5">00065</a> <a class="code" href="classPrice.html" title="Classe che rappresenta il prezzo.">Price</a> <a class="code" href="classEq__op__w.html#4d22b811710ac5adab244e2746c4d3e5" title="funzione che restituisce il payoff dell&amp;#39;opzione dato un cammino">Eq_op_w::Pay_off</a>(<a class="code" href="classPath.html" title="Classe che rappresenta il cammino di un&amp;#39;azione.">Path</a> *cammino){
+<a name="l00066"></a>00066         <span class="keywordtype">double</span> P=0.;
+<a name="l00067"></a>00067         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="classEq__option.html#4798367e9196704e94fff0299caa0aa6" title="funzione che restituisce il vettore di tempi">Get_times</a>().<a class="code" href="classTimestruct.html#3ad4dbba9f3841fafb48f456cc2fb666" title="funzione che restituisce la dimensione del vettore">Get_dim</a>();i++){
+<a name="l00068"></a>00068                 P+=pow(cammino-&gt;<a class="code" href="classPath.html#7ea006259af875cb82e7a25bf8286ffa" title="funzione che restituisce l&amp;#39;i-esimo numero casuale utilizzato per creare il cammino...">Get_nrand</a>(i)-&gt;<a class="code" href="classN__rand.html#6e31438e0126abaf57a5154e88c66672" title="funzione che restituisce il numero">Get_rand</a>(),2);
+<a name="l00069"></a>00069         }
+<a name="l00070"></a>00070         <span class="comment">//creo il price</span>
+<a name="l00071"></a>00071         <a class="code" href="classCurrency.html" title="Classe che rappresenta la valuta.">Currency</a> *currency=cammino-&gt;<a class="code" href="classPath.html#d00f3afa0562c8adc4b8ea45d25da1f1" title="funzione che restiruisce l&amp;#39;azione i-esima">Get_eqprice</a>(0)-&gt;<a class="code" href="classEq__price.html#2a4f35e3be42f766e594d2b9bd82582e" title="funzione che restituisce la valuta a cui fa riferimento il prezzo">Get_currency</a>();
+<a name="l00072"></a>00072         <a class="code" href="classPrice.html" title="Classe che rappresenta il prezzo.">Price</a> payoff(P,currency);
+<a name="l00073"></a>00073         <span class="keywordflow">return</span> payoff;
+<a name="l00074"></a>00074 };
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 <span class="comment">//################################################################################################################</span>
+<a name="l00077"></a>00077 <span class="comment">//OVERLOADING DEL &lt;&lt;</span>
+<a name="l00078"></a>00078 <span class="comment">//################################################################################################################</span>
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 std::ostream &amp;<a class="code" href="classEq__op__w.html#d3c0ddbb971f8dfd616b183513843d7b" title="overloading dell&amp;#39;operatore &amp;quot;&amp;lt;&amp;lt;&amp;quot;">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code" href="classEq__op__w.html" title="Classe che rappresenta un&amp;#39;opzione utilizzata per il controllo della libreria...">Eq_op_w</a> &amp;dat) {
+<a name="l00081"></a>00081         os&lt;&lt;dat.<a class="code" href="classEq__option.html#77d9212336913cc0ff05e06e1720745f" title="funzione che restituisce il punto iniziale dell&amp;#39;azione">Get_Eq_price</a>()&lt;&lt;endl&lt;&lt;dat.<a class="code" href="classEq__option.html#4798367e9196704e94fff0299caa0aa6" title="funzione che restituisce il vettore di tempi">Get_times</a>()&lt;&lt;endl;
+<a name="l00082"></a>00082         <span class="keywordflow">return</span> os;
+<a name="l00083"></a>00083 };
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085 <span class="comment">//################################################################################################################</span>
+<a name="l00086"></a>00086 <span class="comment">//OPERATORE ASSEGNAMENTO</span>
+<a name="l00087"></a>00087 <span class="comment">//################################################################################################################</span>
+<a name="l00088"></a>00088 
+<a name="l00090"></a><a class="code" href="classEq__op__w.html#4a93b22a2d4ae894bccaee2da863718c">00090</a> <a class="code" href="classEq__op__w.html" title="Classe che rappresenta un&amp;#39;opzione utilizzata per il controllo della libreria...">Eq_op_w</a> &amp;<a class="code" href="classEq__op__w.html#4a93b22a2d4ae894bccaee2da863718c" title="overloading dell&amp;#39;operatore di assegnamento">Eq_op_w::operator=</a>(<a class="code" href="classEq__op__w.html" title="Classe che rappresenta un&amp;#39;opzione utilizzata per il controllo della libreria...">Eq_op_w</a> &amp;obj){
+<a name="l00091"></a>00091                 cout&lt;&lt;<span class="stringliteral">"sono in = Eq_op_w\n"</span>;
+<a name="l00092"></a>00092         <a class="code" href="classEq__option.html#7f0b38366d727197e42111768af94b51" title="funzione che imposta il vettore di tempi">Set_times</a>(obj.<a class="code" href="classEq__option.html#4798367e9196704e94fff0299caa0aa6" title="funzione che restituisce il vettore di tempi">Get_times</a>());
+<a name="l00093"></a>00093         <a class="code" href="classEq__option.html#b94c48461e690d4c6c6435863ab57768" title="funzione che imposta il punto iniziale dell&amp;#39;azione">Set_Eq_price</a>(obj.<a class="code" href="classEq__option.html#77d9212336913cc0ff05e06e1720745f" title="funzione che restituisce il punto iniziale dell&amp;#39;azione">Get_Eq_price</a>());
+<a name="l00094"></a>00094         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00095"></a>00095 };
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 <span class="comment">//################################################################################################################</span>
+<a name="l00098"></a>00098 
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:27 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

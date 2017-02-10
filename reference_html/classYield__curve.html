@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Progetto per il pricing di un&#39;opzione: Riferimenti per la classe Yield_curve</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generato da Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classi</span></a></li>
+      <li><a href="files.html"><span>File</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Cerca&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Elenco&nbsp;dei&nbsp;tipi&nbsp;composti</span></a></li>
+      <li><a href="hierarchy.html"><span>Gerarchia&nbsp;delle&nbsp;classi</span></a></li>
+      <li><a href="functions.html"><span>Membri&nbsp;dei&nbsp;composti</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Riferimenti per la classe Yield_curve</h1><!-- doxytag: class="Yield_curve" -->Classe che rappresenta una generica curva dei tassi.  
+<a href="#_details">Continua...</a>
+<p>
+<code>#include &lt;<a class="el" href="yield__curve_8hpp-source.html">yield_curve.hpp</a>&gt;</code>
+<p>
+<div class="dynheader">
+Diagramma delle classi per Yield_curve</div>
+<div class="dynsection">
+
+<p><center><img src="classYield__curve.png" usemap="#Yield_curve_map" border="0" alt=""></center>
+<map name="Yield_curve_map">
+<area href="classYield__curve__flat.html" alt="Yield_curve_flat" shape="rect" coords="0,56,150,80">
+<area href="classYield__curve__term__struct.html" alt="Yield_curve_term_struct" shape="rect" coords="160,56,310,80">
+</map>
+</div>
+
+<p>
+<a href="classYield__curve-members.html">Elenco di tutti i membri.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Membri pubblici</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="62823ac88ca9b3a056f65a8c882c40ed"></a><!-- doxytag: member="Yield_curve::Get_spot_rate" ref="62823ac88ca9b3a056f65a8c882c40ed" args="(const Time &amp;t) const =0" -->
+virtual double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classYield__curve.html#62823ac88ca9b3a056f65a8c882c40ed">Get_spot_rate</a> (const <a class="el" href="classTime.html">Time</a> &amp;t) const =0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">restitisce il tasso ad un tempo t ( è virtual pura) <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="4d33f63f80b7e48f369919bc1474225f"></a><!-- doxytag: member="Yield_curve::Get_spot_rate" ref="4d33f63f80b7e48f369919bc1474225f" args="(const Deltatime &amp;t) const =0" -->
+virtual double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classYield__curve.html#4d33f63f80b7e48f369919bc1474225f">Get_spot_rate</a> (const <a class="el" href="classDeltatime.html">Deltatime</a> &amp;t) const =0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">restitisce il tasso dopo un intervallo di tempo t ( è virtual pura) <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b60484f4e59f56c95675b1a394a15937"></a><!-- doxytag: member="Yield_curve::Get_discount_factor" ref="b60484f4e59f56c95675b1a394a15937" args="(const Time &amp;t) const " -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classYield__curve.html#b60484f4e59f56c95675b1a394a15937">Get_discount_factor</a> (const <a class="el" href="classTime.html">Time</a> &amp;t) const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il fattore di sconto ad un tempo t fissato. Il tempo deve essere positivo(= maggiore di oggi) <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="8927845133e560f4401345abacf10338"></a><!-- doxytag: member="Yield_curve::Get_discount_factor" ref="8927845133e560f4401345abacf10338" args="(const Time &amp;t1, const Time &amp;t2) const " -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classYield__curve.html#8927845133e560f4401345abacf10338">Get_discount_factor</a> (const <a class="el" href="classTime.html">Time</a> &amp;t1, const <a class="el" href="classTime.html">Time</a> &amp;t2) const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il fattore di sconto tra 2 tempi t1 e t2 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="6350d866dea4d86e84e5ef33de6001d3"></a><!-- doxytag: member="Yield_curve::Get_discount_factor" ref="6350d866dea4d86e84e5ef33de6001d3" args="(const Deltatime &amp;delta) const " -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classYield__curve.html#6350d866dea4d86e84e5ef33de6001d3">Get_discount_factor</a> (const <a class="el" href="classDeltatime.html">Deltatime</a> &amp;delta) const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il fattore di sconto su un intervallo temporale delta <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9c2b95fe71570b302e341179d8df9d9"></a><!-- doxytag: member="Yield_curve::Get_forward_rate" ref="a9c2b95fe71570b302e341179d8df9d9" args="(const Time &amp;t1, const Time &amp;t2) const " -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classYield__curve.html#a9c2b95fe71570b302e341179d8df9d9">Get_forward_rate</a> (const <a class="el" href="classTime.html">Time</a> &amp;t1, const <a class="el" href="classTime.html">Time</a> &amp;t2) const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il tasso forward tra i tempi t1 e t2 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="28238f809a9099cea8888a429cf17422"></a><!-- doxytag: member="Yield_curve::Get_forward_rate" ref="28238f809a9099cea8888a429cf17422" args="(const Time &amp;t, const Deltatime &amp;delta) const " -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classYield__curve.html#28238f809a9099cea8888a429cf17422">Get_forward_rate</a> (const <a class="el" href="classTime.html">Time</a> &amp;t, const <a class="el" href="classDeltatime.html">Deltatime</a> &amp;delta) const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">funzione che restituisce il tasso forward su un intervallo delta che parte dal tempo t1 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="f2f35bca2a2584a21df042ecb03b4080"></a><!-- doxytag: member="Yield_curve::operator=" ref="f2f35bca2a2584a21df042ecb03b4080" args="(Yield_curve_flat &amp;obj)" -->
+virtual <a class="el" href="classYield__curve.html">Yield_curve</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classYield__curve.html#f2f35bca2a2584a21df042ecb03b4080">operator=</a> (<a class="el" href="classYield__curve__flat.html">Yield_curve_flat</a> &amp;obj)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">overloading dell'operatore di assegnamento per la classe figlia: <a class="el" href="classYield__curve__flat.html" title="Classe che rappresenta una curva dei tassi costante.">Yield_curve_flat</a> <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="237772b182eee2434cb9e9a942eecb96"></a><!-- doxytag: member="Yield_curve::operator=" ref="237772b182eee2434cb9e9a942eecb96" args="(Yield_curve_term_struct &amp;obj)" -->
+virtual <a class="el" href="classYield__curve.html">Yield_curve</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classYield__curve.html#237772b182eee2434cb9e9a942eecb96">operator=</a> (<a class="el" href="classYield__curve__term__struct.html">Yield_curve_term_struct</a> &amp;obj)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">overloading dell'operatore di assegnamento per la classe figlia: <a class="el" href="classYield__curve__term__struct.html" title="Classe che rappresenta una curva dei tassi complessa, costruita sull’interpolazione...">Yield_curve_term_struct</a> <br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descrizione dettagliata</h2>
+Classe di livello 2. <br>
+ E' la classe madre delle curve del tasso e per questo contiene gli overloading delle funzioni di assegnamento delle classi figlie, dichiarati virtual. <br>
+ Le funzioni che restituiscono lo spot-rate ovvero il tasso ad un tempo ben preciso sono chiaramente virtual pure, poichè saranno implementate diversamente in ogni classe figlia. <br>
+ Sono già implementate le funzioni Get_forward_rate e Get_discount_factor che prescindono dalla struttura delle calssi derivate poichè necessitano delle generiche funzioni Get_spot_rate. 
+<p>Definizione alla linea <a class="el" href="yield__curve_8hpp-source.html#l00051">51</a> del file <a class="el" href="yield__curve_8hpp-source.html">yield_curve.hpp</a>.</p>
+<hr>La documentazione per questa classe è stata generata a partire dai seguenti file:<ul>
+<li><a class="el" href="yield__curve_8hpp-source.html">yield_curve.hpp</a><li><a class="el" href="yield__curve_8cpp-source.html">yield_curve.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generato il Tue Apr 20 01:11:37 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

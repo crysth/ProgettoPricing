@@ -1,0 +1,157 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Progetto per il pricing di un&#39;opzione:  File sorgente eq_process_lognormal_eulero.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generato da Doxygen 1.6.1 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Pagina&nbsp;Principale</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Cerca" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Elenco&nbsp;dei&nbsp;file</span></a></li>
+    </ul>
+  </div>
+<h1>eq_process_lognormal_eulero.cpp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//###################################################################################################</span>
+<a name="l00002"></a>00002 <span class="comment">//      </span>
+<a name="l00003"></a>00003 <span class="comment">//      FILE NAME :                     eq_process_lognormal_eulero.cpp</span>
+<a name="l00004"></a>00004 <span class="comment">//      </span>
+<a name="l00005"></a>00005 <span class="comment">//      FILE TYPE :                     C++ file</span>
+<a name="l00006"></a>00006 <span class="comment">//      </span>
+<a name="l00007"></a>00007 <span class="comment">//      AUTHORS :                       Mariacristina Romano, Gianmaria Enea Roat</span>
+<a name="l00008"></a>00008 <span class="comment">//      </span>
+<a name="l00009"></a>00009 <span class="comment">//      DESCRIPTION :           Implementation of class Eq_process_lognormal_eulero</span>
+<a name="l00010"></a>00010 <span class="comment">//      </span>
+<a name="l00011"></a>00011 <span class="comment">//      FIRST VERSION :         2010/feb/3</span>
+<a name="l00012"></a>00012 <span class="comment">//      </span>
+<a name="l00013"></a>00013 <span class="comment">//      LAST UPTIME :           2010/feb/28</span>
+<a name="l00014"></a>00014 <span class="comment">//      </span>
+<a name="l00015"></a>00015 <span class="comment">//      STATUS :                        final</span>
+<a name="l00016"></a>00016 <span class="comment">//      </span>
+<a name="l00017"></a>00017 <span class="comment">//      COPYRIGHT :                     none</span>
+<a name="l00018"></a>00018 <span class="comment">//      </span>
+<a name="l00019"></a>00019 <span class="comment">//      </span>
+<a name="l00020"></a>00020 <span class="comment">//      DETAILED DESCRIPTION :  Rappresenta i processi che regolano l&apos;evoluzione temporale di una azione che segua un processo lognormale secondo funzioni </span>
+<a name="l00021"></a>00021 <span class="comment">//                                      che dipendono da una random variabile gaussiana con media nulla e varianza unitaria. Il processo qui implementato permette </span>
+<a name="l00022"></a>00022 <span class="comment">//                                      la valutazione con formula approssiamta di Eulero: </span>
+<a name="l00023"></a>00023 <span class="comment">//                                      P = Po +   (r*(t2-t1) + s*(sqrt( t2 - t1 )) * w) * Po  </span>
+<a name="l00024"></a>00024 <span class="comment">//                                      dove P è il prezzo finale al tempo t2, Po il prezzo iniziale al tempo t1, r il tasso forward tra i tempi t1 e t2, s rappresenta </span>
+<a name="l00025"></a>00025 <span class="comment">//                                      la volatilità e w è la variabile estratta dalla gaussiana.    </span>
+<a name="l00026"></a>00026 <span class="comment">//      </span>
+<a name="l00027"></a>00027 <span class="comment">//      </span>
+<a name="l00028"></a>00028 <span class="comment">//</span>
+<a name="l00029"></a>00029 <span class="comment">//      </span>
+<a name="l00030"></a>00030 <span class="comment">//      </span>
+<a name="l00031"></a>00031 <span class="comment">//#######################################################################################################</span>
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="preprocessor">#include &quot;eq_process_lognormal_eulero.hpp&quot;</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;cmath&gt;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="comment">//##############################################################################################################</span>
+<a name="l00039"></a>00039 <span class="comment">//COSTRUTTORI~DISTRUTTORE</span>
+<a name="l00040"></a>00040 <span class="comment">//##############################################################################################################</span>
+<a name="l00042"></a><a class="code" href="classEq__process__lognormal__eulero.html#ad38938036ef1ba6757f9b5eebca7b726">00042</a> <span class="comment"></span><a class="code" href="classEq__process__lognormal__eulero.html#ad38938036ef1ba6757f9b5eebca7b726" title="costruttore di default">Eq_process_lognormal_eulero::Eq_process_lognormal_eulero</a>(): <a class="code" href="classEq__process.html" title="Classe che rappresenta il generico concetto di processo relativo ad un&amp;#39;azione...">Eq_process</a>(){
+<a name="l00043"></a>00043         <a class="code" href="classEq__process.html#addd386a0f6f7cdfb3a0f1969a26c44cb" title="funzione che restituisce il generatore di numeri casuali di default">Set_rand_gen</a>();
+<a name="l00044"></a>00044 };
+<a name="l00046"></a><a class="code" href="classEq__process__lognormal__eulero.html#a1e769961aaec1e25f77a8d7717577280">00046</a> <a class="code" href="classEq__process__lognormal__eulero.html#ad38938036ef1ba6757f9b5eebca7b726" title="costruttore di default">Eq_process_lognormal_eulero::Eq_process_lognormal_eulero</a>(<a class="code" href="classRand__gen.html" title="Classe che rappresenta un generico generatore di numeri casuali.">Rand_gen</a> *ra): <a class="code" href="classEq__process.html" title="Classe che rappresenta il generico concetto di processo relativo ad un&amp;#39;azione...">Eq_process</a>(){
+<a name="l00047"></a>00047         <a class="code" href="classEq__process.html#addd386a0f6f7cdfb3a0f1969a26c44cb" title="funzione che restituisce il generatore di numeri casuali di default">Set_rand_gen</a>(ra);
+<a name="l00048"></a>00048 };
+<a name="l00050"></a><a class="code" href="classEq__process__lognormal__eulero.html#a0525975fb96e720d458b63e60355a5e3">00050</a> <a class="code" href="classEq__process__lognormal__eulero.html#a0525975fb96e720d458b63e60355a5e3" title="distruttore">Eq_process_lognormal_eulero::~Eq_process_lognormal_eulero</a>(){};
+<a name="l00051"></a>00051 <span class="comment">//##############################################################################################################</span>
+<a name="l00052"></a>00052 <span class="comment">//EVOLUZIONE</span>
+<a name="l00053"></a>00053 <span class="comment">//#############################################################################################################         </span>
+<a name="l00055"></a><a class="code" href="classEq__process__lognormal__eulero.html#a5aff1deabe39895b350c3274323b3b56">00055</a> <span class="comment"></span><span class="keywordtype">void</span> <a class="code" href="classEq__process__lognormal__eulero.html#a5aff1deabe39895b350c3274323b3b56" title="funzione che fa evolvere un eqprice in un altro">Eq_process_lognormal_eulero::Evol</a>(<a class="code" href="classEq__price.html" title="Classe che rappresenta il prezzo di un&amp;#39;azione in un istante fissato.">Eq_price</a> *A,<a class="code" href="classEq__price.html" title="Classe che rappresenta il prezzo di un&amp;#39;azione in un istante fissato.">Eq_price</a> *B, <a class="code" href="classN__rand.html" title="Questa classe rappresenta un contenitore di numeri generati casualmente.">N_rand</a> *w)<span class="keyword"> const </span>{
+<a name="l00056"></a>00056         <span class="comment">//ottengo i dati da inserire nella formula</span>
+<a name="l00057"></a>00057         <span class="comment">/*startprice*/</span>
+<a name="l00058"></a>00058         <span class="keywordtype">double</span> Po = A-&gt;<a class="code" href="classEq__price.html#a88876ad7790daa0e4b16f76cbab15761" title="funzione che restituisce il prezzo">Get_Eq_price</a>().<a class="code" href="classPrice.html#a2736cb032a733ab3d6f84cd166e1c29e" title="funzione che restituisce il prezzo">Get_price</a>();
+<a name="l00059"></a>00059         <span class="comment">/* T1 */</span>
+<a name="l00060"></a>00060         <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> t1 = A-&gt;<a class="code" href="classEq__price.html#ad21d4cc734d488fac1709ce4968d9722" title="funzione che restituisce l&amp;#39;istante temporale">Get_time</a>();
+<a name="l00061"></a>00061         <span class="comment">/* T2 */</span>
+<a name="l00062"></a>00062         <a class="code" href="classTime.html" title="Classe che rappresenta un istante temporale.">Time</a> t2 = B-&gt;<a class="code" href="classEq__price.html#ad21d4cc734d488fac1709ce4968d9722" title="funzione che restituisce l&amp;#39;istante temporale">Get_time</a>();
+<a name="l00063"></a>00063         <span class="comment">/* T2-T1 */</span>
+<a name="l00064"></a>00064         <a class="code" href="classDeltatime.html" title="Classe che rappresenta un intervallo temporale.">Deltatime</a> delta=t2-t1;
+<a name="l00065"></a>00065         <span class="keywordtype">double</span> deltanumerico=delta.<a class="code" href="classDeltatime.html#ae73c874b672dae80612ce1e239f56795" title="valutazione del deltatime in frazione di anni">Value</a>();
+<a name="l00066"></a>00066         <span class="comment">/*fwr rate*/</span>
+<a name="l00067"></a>00067         <span class="keywordtype">double</span> r = A-&gt;<a class="code" href="classEq__price.html#a1f6025cebabb257444f3e896d0d96a56" title="funzione che restituisce l&amp;#39;anagrafica dell&amp;#39;azione">Get_eq</a>()-&gt;<a class="code" href="classEq__description.html#af128bbba228aa55dfe1a948552d46a95" title="funzione che restituisce il puntatore alla curva dei tassi a cui fa riferimento l&amp;#39;azione...">Get_curve</a>()-&gt;<a class="code" href="classYield__curve.html#aa9c2b95fe71570b302e341179d8df9d9" title="funzione che restituisce il tasso forward tra i tempi t1 e t2">Get_forward_rate</a>(t1,delta);
+<a name="l00068"></a>00068         <span class="comment">/*volatility*/</span>
+<a name="l00069"></a>00069         <span class="keywordtype">double</span> sigma = A-&gt;<a class="code" href="classEq__price.html#a1f6025cebabb257444f3e896d0d96a56" title="funzione che restituisce l&amp;#39;anagrafica dell&amp;#39;azione">Get_eq</a>()-&gt;<a class="code" href="classEq__description.html#af1bcf882a97284d289e2dbc6872082ba" title="funzione che restituisce il puntatore alla curva di volatilità a cui fa riferimento...">Get_vol</a>()-&gt;<a class="code" href="classVolatility.html#a4a239cffdbd0fd4f7349236599424581" title="funzione che restituisce la volatilità tra i tempi t1 e t2 (virtual pura)">Get_vol</a>(t1,t2);
+<a name="l00070"></a>00070         <span class="comment">//Evolvo con la formula</span>
+<a name="l00071"></a>00071         <span class="comment">/*formula eulero*/</span>
+<a name="l00072"></a>00072         <span class="keywordtype">double</span> P = Po + ( ( (r*(t2-t1)) + sigma*(sqrt(deltanumerico)) * (*w) ) * Po  );
+<a name="l00073"></a>00073         <span class="comment">//imposto la currency </span>
+<a name="l00074"></a>00074         <a class="code" href="classPrice.html" title="Classe che rappresenta il prezzo.">Price</a> ris(P,A-&gt;<a class="code" href="classEq__price.html#a2a4f35e3be42f766e594d2b9bd82582e" title="funzione che restituisce la valuta a cui fa riferimento il prezzo">Get_currency</a>());
+<a name="l00075"></a>00075         <span class="comment">/*set price*/</span>   
+<a name="l00076"></a>00076         B-&gt;<a class="code" href="classEq__price.html#a91454c9ad5657664d6f64b3aafc47b2d" title="funzione che imposta il prezzo">Set_price</a>(ris);
+<a name="l00077"></a>00077         <span class="comment">/*set equity*/</span>  
+<a name="l00078"></a>00078         B-&gt;<a class="code" href="classEq__price.html#a25be990ce3c726e0203b6d2732f41f45" title="funzione che imposta l&amp;#39;anagrafica dell&amp;#39;azione">Set_eq</a>(A-&gt;<a class="code" href="classEq__price.html#a1f6025cebabb257444f3e896d0d96a56" title="funzione che restituisce l&amp;#39;anagrafica dell&amp;#39;azione">Get_eq</a>());
+<a name="l00079"></a>00079 };
+<a name="l00080"></a>00080 
+<a name="l00082"></a><a class="code" href="classEq__process__lognormal__eulero.html#a02dab52ba82530e85c842bdba5faeffc">00082</a> <a class="code" href="classN__rand.html" title="Questa classe rappresenta un contenitore di numeri generati casualmente.">N_rand</a> *<a class="code" href="classEq__process__lognormal__eulero.html#a02dab52ba82530e85c842bdba5faeffc" title="funzione che restituisce il numero casuale estratto da una distribuzione gaussiana...">Eq_process_lognormal_eulero::Get_w</a>()<span class="keyword"> const</span>{
+<a name="l00083"></a>00083         <span class="keywordflow">return</span> <a class="code" href="classEq__process.html#aa9c368adbe970803870d020d6a95102c" title="funzione che restituisce il generatore di numeri casuali">Get_rand_gen</a>()-&gt;<a class="code" href="classRand__gen.html#a2f1e372b6b3bb67ca0663d6f1fa88263" title="funzione che restituisce un numero random estratto da una distribuzione gaussiana...">Get_gauss</a>(0,1);
+<a name="l00084"></a>00084 };
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 <span class="comment">//##############################################################################################################</span>
+<a name="l00087"></a>00087 <span class="comment">//OPERATORE ASSEGNAMENTO</span>
+<a name="l00088"></a>00088 <span class="comment">//##############################################################################################################</span>
+<a name="l00090"></a><a class="code" href="classEq__process__lognormal__eulero.html#a6675e134c24a99bc3df76b6ceeff5796">00090</a> <span class="comment"></span><a class="code" href="classEq__process__lognormal__eulero.html" title="Classe che rappresenta un processo lognormale valutato con la formula approssimata...">Eq_process_lognormal_eulero</a> &amp;<a class="code" href="classEq__process__lognormal__eulero.html#a6675e134c24a99bc3df76b6ceeff5796" title="overloading dell&amp;#39;operatore di assegnamento">Eq_process_lognormal_eulero::operator=</a>(<a class="code" href="classEq__process__lognormal__eulero.html" title="Classe che rappresenta un processo lognormale valutato con la formula approssimata...">Eq_process_lognormal_eulero</a> &amp;obj){
+<a name="l00091"></a>00091                 cout&lt;&lt;<span class="stringliteral">&quot;sono in = Eq_process_lognormal_eulero \n&quot;</span>;
+<a name="l00092"></a>00092         <a class="code" href="classEq__process.html#addd386a0f6f7cdfb3a0f1969a26c44cb" title="funzione che restituisce il generatore di numeri casuali di default">Set_rand_gen</a>(obj.<a class="code" href="classEq__process.html#aa9c368adbe970803870d020d6a95102c" title="funzione che restituisce il generatore di numeri casuali">Get_rand_gen</a>());
+<a name="l00093"></a>00093         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00094"></a>00094 };
+<a name="l00095"></a>00095 <span class="comment">//##############################################################################################################</span>
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 
+</pre></div></div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Friend</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr size="1"/><address style="text-align: right;"><small>Generato il Wed May 5 15:16:33 2010 per Progetto per il pricing di un'opzione da&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

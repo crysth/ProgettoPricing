@@ -1,0 +1,87 @@
+\documentclass[a4paper]{book}
+\usepackage{a4wide}
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{times}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+
+\usepackage{doxygen}
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{Reference della libreria per il progetto di pricing di un'opzione}
+\author{Mariacristina Romano\and Gianmaria Enea Roat}
+%\date{}
+
+\begin{document}
+
+\maketitle
+
+%\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+%\clearemptydoublepage
+\pagenumbering{arabic}
+\chapter{Indice dei tipi composti}
+\input{hierarchy}
+\chapter{Indice dei tipi composti}
+\input{annotated}
+\chapter{Documentazione delle classi}
+\input{classCurrency}
+\include{classDeltatime}
+\include{classEq__description}
+\include{classEq__op__performance__with__corridor}
+\include{classEq__op__plainvanilla}
+\include{classEq__op__w}
+\include{classEq__option}
+\include{classEq__price}
+\include{classEq__pricer}
+\include{classEq__pricer__montecarlo}
+\include{classEq__process}
+\include{classEq__process__lognormal__binary}
+\include{classEq__process__lognormal__esatto}
+\include{classEq__process__lognormal__eulero}
+\include{classErrorList}
+\include{classN__rand}
+\include{classOption}
+\include{classPath}
+\include{classPrice}
+\include{classPricing}
+\include{classProcess}
+\include{classRand__gen}
+\include{classRand__gen__root}
+\include{classStatistica}
+\include{classStima__montecarlo}
+\include{classTime}
+\include{classTimestruct}
+\include{classVol__std}
+\include{classVolatility}
+\include{classYield__curve}
+\include{classYield__curve__flat}
+\include{classYield__curve__term__struct}
+\printindex
+\end{document}
